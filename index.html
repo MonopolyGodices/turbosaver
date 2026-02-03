@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbo Saver | TikTok, FB, IG & X Video Downloader</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Download videos from TikTok, Facebook, Instagram, and X (Twitter) using Turbo Saver API.">
+    
+    <!-- CSS Links -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased bg-dark text-white">
+
+    <!-- Navbar -->
+    <nav class="nav-container">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-primary text-2xl"></i>
+                <span class="text-xl font-bold">Turbo Saver</span>
+            </div>
+            <div class="flex gap-4 items-center">
+                <button id="langToggle" class="btn-outline">
+                    <i class="fa-solid fa-globe"></i> <span id="langBtnText">English</span>
+                </button>
+                <a href="#download-app" class="btn-primary-pill">
+                    <i class="fa-brands fa-android"></i> <span data-i18n="nav_download">تحميل التطبيق</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-section">
+        <h1 class="main-title">
+            <span data-i18n="hero_title_1">حمل فيديوهاتك</span> 
+            <span class="gradient-text" data-i18n="hero_title_2">بسرعة توربو</span>
+        </h1>
+        <p class="hero-subtitle" data-i18n="hero_desc">أداة قوية لتحميل الوسائط من جميع المنصات الاجتماعية بأعلى جودة.</p>
+
+        <div class="tool-box">
+            <div class="social-icons">
+                <i class="fa-brands fa-tiktok platform-icon text-pink-500"></i>
+                <i class="fa-brands fa-facebook platform-icon text-blue-600"></i>
+                <i class="fa-brands fa-instagram platform-icon text-purple-500"></i>
+                <i class="fa-brands fa-x-twitter platform-icon text-white"></i>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="urlInput" placeholder="Paste link here..." class="url-input" dir="ltr">
+                <button id="downloadBtn" class="btn-download">
+                    <span data-i18n="btn_download">تحميل</span> <i class="fa-solid fa-download"></i>
+                </button>
+            </div>
+            <div id="loader" class="loader"></div>
+            <div id="resultArea" class="result-container hidden"></div>
+        </div>
+    </header>
+
+    <!-- App Section -->
+    <section id="download-app" class="app-section">
+        <div class="container mx-auto px-4">
+            <div class="promo-card">
+                <div class="promo-content">
+                    <h2 class="text-3xl font-bold mb-4" data-i18n="app_sec_title">تطبيق الأندرويد الرسمي</h2>
+                    <p class="text-gray-400 mb-6" data-i18n="app_sec_desc">حمل حالات واتساب، استمتع بسرعات مضاعفة، وتجربة خالية من الإعلانات.</p>
+                    <a href="TurboSaver.apk" class="btn-apk">
+                        <i class="fa-brands fa-android text-2xl"></i> <span data-i18n="btn_apk">تنزيل APK مجاناً</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p data-i18n="footer_rights">&copy; 2026 Turbo Saver. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
