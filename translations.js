@@ -1,14 +1,21 @@
-let currentLang = 'ar';
-
 const translations = {
     ar: {
-        nav_download: "تثبيت التطبيق",
+        nav_download: "تنزيل التطبيق",
         hero_title_1: "حمل فيديوهاتك",
-        hero_title_2: "بسرعة توربو",
-        hero_desc: "أداة قوية لتحميل الوسائط من تيك توك، فيسبوك، انستغرام، وتويتر (X).",
-        btn_download: "تحميل",
+        hero_title_2: "بضغطة واحدة",
+        hero_desc: "الأداة رقم #1 لتحميل الوسائط من جميع المنصات الاجتماعية بجودة أصلية وبدون قيود.",
+        btn_download: "تحميل الآن",
+        how_to_title: "كيفية التحميل؟",
+        step1_title: "انسخ الرابط",
+        step1_desc: "اذهب للفيديو الذي تريد تحميله وانسخ الرابط من زر المشاركة.",
+        step2_title: "الصق الرابط",
+        step2_desc: "عد إلى Turbo Saver والصق الرابط في المربع المخصص في الأعلى.",
+        step3_title: "اضغط تحميل",
+        step3_desc: "اضغط على زر التحميل، وسيكون الفيديو متاحاً في ثوانٍ معدودة.",
+        seo_title: "أفضل موقع لتنزيل الفيديوهات 2026",
+        seo_text: "يوفر لك موقع Turbo Saver تجربة تنزيل فريدة من نوعها. سواء كنت ترغب في تنزيل فيديوهات تيك توك بدون علامة مائية أو حفظ فيديوهات فيسبوك بجودة عالية، فإن نظامنا المتطور يضمن لك السرعة والأمان. يدعم الموقع أيضاً تنزيل ريلز انستقرام ومقاطع تويتر بجودة MP4.",
         app_sec_title: "تطبيق الأندرويد الرسمي",
-        app_sec_desc: "احصل على ميزات حصرية مثل حفظ حالات واتساب وسرعة تحميل مضاعفة.",
+        app_sec_desc: "استمتع بميزات حصرية مثل حفظ حالات واتساب وسرعة تحميل مضاعفة.",
         btn_apk: "تنزيل APK مجاناً",
         footer_rights: "&copy; 2026 Turbo Saver. جميع الحقوق محفوظة.",
         error_url: "المرجو وضع رابط صحيح!",
@@ -18,9 +25,18 @@ const translations = {
     en: {
         nav_download: "Get App",
         hero_title_1: "Download Videos",
-        hero_title_2: "At Turbo Speed",
-        hero_desc: "Powerful tool to download media from TikTok, Facebook, Instagram, and Twitter (X).",
-        btn_download: "Download",
+        hero_title_2: "In One Click",
+        hero_desc: "The #1 tool to download media from all social platforms with original quality and no limits.",
+        btn_download: "Download Now",
+        how_to_title: "How to Download?",
+        step1_title: "Copy Link",
+        step1_desc: "Go to the video you want to download and copy the link from the share button.",
+        step2_title: "Paste Link",
+        step2_desc: "Return to Turbo Saver and paste the link in the box above.",
+        step3_title: "Click Download",
+        step3_desc: "Click the download button, and your video will be ready in seconds.",
+        seo_title: "Best Video Downloader 2026",
+        seo_text: "Turbo Saver provides a unique downloading experience. Whether you want to download TikTok videos without watermark or save Facebook videos in HD, our advanced system ensures speed and safety. We also support Instagram Reels and Twitter clips.",
         app_sec_title: "Official Android App",
         app_sec_desc: "Get exclusive features like WhatsApp Status saver and 2x faster downloads.",
         btn_apk: "Download APK Free",
@@ -30,17 +46,3 @@ const translations = {
         download_aud: "Download Audio"
     }
 };
-
-function updateLanguage() {
-    const t = translations[currentLang];
-    document.documentElement.lang = currentLang;
-    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-    document.getElementById('langBtnText').innerText = currentLang === 'ar' ? 'English' : 'العربية';
-    
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key]) el.innerHTML = t[key];
-    });
-
-    localStorage.setItem('turbo_lang', currentLang);
-}
