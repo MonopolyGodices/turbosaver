@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO المتقدم -->
-    <title>Turbo Saver | تنزيل فيديوهات تيك توك، فيسبوك، انستقرام، إكس (تويتر)</title>
-    <meta name="description" content="أسرع أداة مجانية لتنزيل فيديوهات تيك توك بدون علامة مائية، فيديوهات فيسبوك بجودة HD، ريلز انستقرام، ومقاطع تويتر (X). حمل الآن بسهولة عبر Turbo Saver.">
-    <meta name="keywords" content="تنزيل فيديو تيك توك بدون علامة مائية, تحميل فيديوهات فيسبوك, برنامج حفظ ريلز انستقرام, تحميل فيديو من تويتر, TikTok Downloader no watermark, FB Video Saver, Instagram Reels Downloader, X Video Downloader">
+    <title data-i18n="meta_title">Turbo Saver | تنزيل فيديوهات تيك توك، فيسبوك، انستقرام</title>
+    <meta name="description" content="أسرع أداة مجانية لتنزيل فيديوهات تيك توك بدون علامة مائية، فيديوهات فيسبوك بجودة HD، ريلز انستقرام، ومقاطع تويتر (X).">
     
-    <!-- الروابط الأساسية -->
     <link rel="canonical" href="https://turbodwn.com/">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -18,10 +16,10 @@
 </head>
 <body class="bg-black text-white antialiased">
 
-    <!-- Navbar العصري -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="container mx-auto px-4 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-2 group cursor-pointer">
+            <div class="flex items-center gap-2 group cursor-pointer" onclick="location.reload()">
                 <div class="logo-box">
                     <i class="fa-solid fa-bolt-lightning text-primary"></i>
                 </div>
@@ -29,13 +27,14 @@
             </div>
             
             <div class="flex items-center gap-3">
+                <!-- زر اللغة المصغر -->
                 <button id="langToggle" class="lang-pill">
-                    <i class="fa-solid fa-globe text-xs"></i>
-                    <span id="langBtnText" class="text-xs font-bold">EN</span>
+                    <i class="fa-solid fa-globe text-[10px]"></i>
+                    <span id="langBtnText" class="text-[11px] font-bold uppercase">EN</span>
                 </button>
                 <a href="TurboSaver.apk" class="nav-download-btn">
                     <i class="fa-brands fa-android"></i>
-                    <span class="hidden sm:inline" data-i18n="nav_download">تنزيل التطبيق</span>
+                    <span class="hidden sm:inline text-xs" data-i18n="nav_download">تنزيل التطبيق</span>
                 </a>
             </div>
         </div>
@@ -46,28 +45,28 @@
         <div class="container mx-auto px-4 py-12 md:py-20 text-center">
             <h1 class="hero-title">
                 <span data-i18n="hero_title_1">حمل فيديوهاتك</span> 
+                <br>
                 <span class="text-gradient" data-i18n="hero_title_2">بضغطة واحدة</span>
             </h1>
             <p class="hero-desc" data-i18n="hero_desc">الأداة رقم #1 لتحميل الوسائط من جميع المنصات الاجتماعية بجودة أصلية وبدون قيود.</p>
 
-            <!-- Box الأدوات -->
             <div class="search-container">
                 <div class="platforms-grid mb-8">
-                    <div class="platform-item" title="TikTok"><i class="fa-brands fa-tiktok text-pink-500"></i><span>TikTok</span></div>
-                    <div class="platform-item" title="Facebook"><i class="fa-brands fa-facebook text-blue-600"></i><span>Facebook</span></div>
-                    <div class="platform-item" title="Instagram"><i class="fa-brands fa-instagram text-gradient-ig"></i><span>Instagram</span></div>
-                    <div class="platform-item" title="X / Twitter"><i class="fa-brands fa-x-twitter text-white"></i><span>X / Twitter</span></div>
-                    <div class="platform-item" title="Threads"><i class="fa-brands fa-threads text-gray-400"></i><span>Threads</span></div>
+                    <div class="platform-item"><i class="fa-brands fa-tiktok text-pink-500"></i><span>TikTok</span></div>
+                    <div class="platform-item"><i class="fa-brands fa-facebook text-blue-600"></i><span>Facebook</span></div>
+                    <div class="platform-item"><i class="fa-brands fa-instagram text-gradient-ig"></i><span>Instagram</span></div>
+                    <div class="platform-item"><i class="fa-brands fa-x-twitter text-white"></i><span>X / Twitter</span></div>
+                    <div class="platform-item"><i class="fa-brands fa-threads text-gray-400"></i><span>Threads</span></div>
                 </div>
                 
                 <div class="input-wrapper">
                     <div class="relative flex-1">
-                        <i class="fa-solid fa-link absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                        <input type="text" id="urlInput" placeholder="ضع رابط الفيديو هنا..." class="main-input" dir="auto">
+                        <i id="linkIcon" class="fa-solid fa-link absolute top-1/2 -translate-y-1/2 text-gray-500 px-4"></i>
+                        <input type="text" id="urlInput" data-i18n-placeholder="input_placeholder" placeholder="ضع رابط الفيديو هنا..." class="main-input" dir="auto">
                     </div>
                     <button id="downloadBtn" class="main-btn">
                         <span data-i18n="btn_download">تحميل الآن</span>
-                        <i class="fa-solid fa-arrow-down"></i>
+                        <i id="arrowIcon" class="fa-solid fa-arrow-down"></i>
                     </button>
                 </div>
                 
@@ -101,28 +100,28 @@
         </div>
     </section>
 
-    <!-- Features & SEO Text -->
+    <!-- SEO & Keywords Section -->
     <section class="py-16 border-t border-zinc-900">
         <div class="container mx-auto px-4 max-w-4xl text-center">
             <h2 class="text-3xl font-bold mb-6" data-i18n="seo_title">أفضل موقع لتنزيل الفيديوهات 2026</h2>
             <p class="text-gray-400 leading-relaxed mb-8" data-i18n="seo_text">
-                يوفر لك موقع Turbo Saver تجربة تنزيل فريدة من نوعها. سواء كنت ترغب في <strong>تنزيل فيديوهات تيك توك بدون علامة مائية</strong> أو حفظ <strong>فيديوهات فيسبوك</strong> بجودة عالية، فإن نظامنا المتطور المرتبط بسيرفرات Render يضمن لك السرعة والأمان. يدعم الموقع أيضاً <strong>تنزيل ريلز انستقرام</strong> ومقاطع <strong>تويتر</strong> بجودة MP4.
+                يوفر لك موقع Turbo Saver تجربة تنزيل فريدة من نوعها. سواء كنت ترغب في تنزيل فيديوهات تيك توك بدون علامة مائية أو حفظ فيديوهات فيسبوك بجودة عالية.
             </p>
             <div class="flex justify-center gap-4 flex-wrap">
-                <span class="badge">#تنزيل_تيك_توك</span>
-                <span class="badge">#تحميل_من_فيسبوك</span>
-                <span class="badge">#Save_Instagram_Reels</span>
-                <span class="badge">#X_Downloader</span>
+                <span class="badge" data-i18n="tag1">#تنزيل_تيك_توك</span>
+                <span class="badge" data-i18n="tag2">#تحميل_فيسبوك</span>
+                <span class="badge" data-i18n="tag3">#Save_Instagram</span>
+                <span class="badge" data-i18n="tag4">#Turbo_Saver</span>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm opacity-50" data-i18n="footer_rights">&copy; 2026 Turbo Saver. جميع الحقوق محفوظة.</p>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-primary transition">Privacy Policy</a>
-                <a href="#" class="hover:text-primary transition">Terms of Service</a>
+            <p class="text-[10px] opacity-40 uppercase tracking-widest font-inter" data-i18n="footer_rights">&copy; 2026 Turbo Saver. All rights reserved.</p>
+            <div class="flex gap-6 text-[11px] font-bold">
+                <a href="#" class="hover:text-primary transition uppercase" data-i18n="footer_privacy">Privacy Policy</a>
+                <a href="#" class="hover:text-primary transition uppercase" data-i18n="footer_terms">Terms</a>
             </div>
         </div>
     </footer>
