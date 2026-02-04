@@ -3,66 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="meta_title">Turbo Saver | Downloader</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <title data-i18n="meta_title">Turbo Saver | أسرع أداة تحميل فيديوهات 2026</title>
+    <meta name="description" content="حمل فيديوهات تيك توك بدون علامة مائية، ريلز انستقرام، فيديوهات فيسبوك وإكس بجودة عالية 4K. أداة Turbo Saver المجانية والسريعة.">
+    <meta name="keywords" content="تحميل فيديوهات, تيك توك بدون علامة مائية, تنزيل ريلز, سناب تيك, Turbo Saver, Download TikTok No Watermark, Instagram Reels Downloader">
+    <meta name="author" content="Mohammed Amine">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Turbo Saver | أسرع أداة تحميل فيديوهات">
+    <meta property="og:description" content="حمل من تيك توك، انستقرام، وفيسبوك بضغطة واحدة.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/E91E63/FFFFFF?text=Turbo+Saver">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#050505] text-white antialiased">
 
+    <!-- Header Navigation -->
     <nav class="navbar">
-        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-2" onclick="location.reload()" style="cursor:pointer">
-                <div class="logo-box"><i class="fa-solid fa-bolt-lightning text-primary"></i></div>
-                <span class="text-xl font-black tracking-tighter uppercase font-inter">Turbo Saver</span>
+        <div class="container mx-auto px-4 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.reload()">
+                <div class="logo-box">
+                    <i class="fa-solid fa-bolt-lightning text-primary animate-pulse"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter uppercase leading-none">Turbo Saver</span>
+                    <span class="text-[10px] text-primary font-bold tracking-[0.2em]">PREMIUM TOOL</span>
+                </div>
             </div>
-            <div class="flex items-center gap-2">
+            
+            <div class="flex items-center gap-4">
                 <button id="langToggle" class="lang-pill">
-                    <i class="fa-solid fa-globe"></i> <span id="langBtnText">EN</span>
+                    <i class="fa-solid fa-language text-lg"></i>
+                    <span id="langBtnText">EN</span>
                 </button>
-                <a href="TurboSaver.apk" class="nav-download-btn">
-                    <i class="fa-brands fa-android"></i> <span data-i18n="nav_download">App</span>
+                <a href="#" class="nav-app-btn hidden md:flex">
+                    <i class="fa-brands fa-android"></i>
+                    <span data-i18n="nav_download">تنزيل التطبيق</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <header class="hero-container">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_1">حمل فيديوهاتك</span><br>
-                <span class="text-gradient" data-i18n="hero_title_2">بسرعة توربو</span>
+    <!-- Hero Section -->
+    <main class="container mx-auto px-4 py-12 md:py-20">
+        <div class="text-center max-w-4xl mx-auto">
+            <div class="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 animate-bounce">
+                🚀 #1 Video Downloader 2026
+            </div>
+            <h1 class="hero-title mb-6">
+                <span data-i18n="hero_title_1">حمل فيديوهاتك المفضلة</span><br>
+                <span class="text-gradient" data-i18n="hero_title_2">بسرعة البرق وبجودة 4K</span>
             </h1>
+            <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto" data-i18n="hero_desc">
+                أفضل أداة مجانية لتحميل الفيديو والصوت من تيك توك، فيسبوك، انستقرام، وإكس بدون علامة مائية.
+            </p>
 
-            <div class="download-card">
-                <!-- أيقونات المنصات -->
-                <div class="platforms-bar">
-                    <div class="p-icon tiktok"><i class="fa-brands fa-tiktok"></i></div>
-                    <div class="p-icon facebook"><i class="fa-brands fa-facebook"></i></div>
-                    <div class="p-icon instagram"><i class="fa-brands fa-instagram"></i></div>
-                    <div class="p-icon twitter"><i class="fa-brands fa-x-twitter"></i></div>
-                    <div class="p-icon threads"><i class="fa-brands fa-threads"></i></div>
+            <!-- Downloader Card -->
+            <div class="download-card relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+                
+                <div class="platforms-bar flex flex-wrap justify-center gap-4 mb-10">
+                    <div class="p-icon" title="TikTok"><i class="fa-brands fa-tiktok"></i></div>
+                    <div class="p-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="p-icon" title="Facebook"><i class="fa-brands fa-facebook"></i></div>
+                    <div class="p-icon" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></div>
+                    <div class="p-icon" title="Threads"><i class="fa-brands fa-threads"></i></div>
                 </div>
 
-                <!-- صندوق الإدخال المصلح -->
-                <div class="input-wrapper-fixed">
-                    <div class="relative-input-box">
-                        <i id="linkIcon" class="fa-solid fa-link input-icon"></i>
-                        <input type="text" id="urlInput" data-i18n-placeholder="input_placeholder" placeholder="ضع الرابط هنا..." class="clean-input">
+                <div class="input-container-modern">
+                    <div class="input-group relative flex-1">
+                        <i class="fa-solid fa-link absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 icon-dir"></i>
+                        <input type="text" id="urlInput" data-i18n-placeholder="input_placeholder" placeholder="ضع رابط الفيديو هنا..." class="modern-input">
                     </div>
-                    <button id="downloadBtn" class="clean-btn">
-                        <span data-i18n="btn_download">تحميل</span>
-                        <i class="fa-solid fa-download"></i>
+                    <button id="downloadBtn" class="modern-btn">
+                        <span data-i18n="btn_download">تحميل الآن</span>
+                        <i class="fa-solid fa-circle-arrow-down"></i>
                     </button>
                 </div>
 
-                <div id="loader" class="loader-v3"></div>
-                <div id="resultArea" class="result-area hidden"></div>
+                <div id="loader" class="loader-neon"></div>
+                <div id="resultArea" class="result-container hidden mt-8"></div>
             </div>
         </div>
-    </header>
+    </main>
 
+    <!-- Features Section (SEO Purpose) -->
+    <section class="container mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-zinc-900 mt-20">
+        <div class="feature-card">
+            <i class="fa-solid fa-shield-halved text-primary text-3xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_1_title">أمان كامل</h3>
+            <p class="text-gray-500 text-sm" data-i18n="feature_1_desc">نحن لا نقوم بتخزين أي من بياناتك أو فيديوهاتك على سيرفراتنا.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-wand-magic-sparkles text-primary text-3xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_2_title">بدون علامة مائية</h3>
+            <p class="text-gray-500 text-sm" data-i18n="feature_2_desc">حمل فيديوهات تيك توك بنقاء عالي جداً وبدون أي شعارات مزعجة.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-bolt text-primary text-3xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_3_title">سرعة فائقة</h3>
+            <p class="text-gray-500 text-sm" data-i18n="feature_3_desc">معالجة فورية للروابط وتوفير خيارات تحميل متعددة في ثوانٍ.</p>
+        </div>
+    </section>
+
+    <!-- Scripts -->
     <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
