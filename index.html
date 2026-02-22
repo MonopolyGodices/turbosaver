@@ -1,1 +1,261 @@
 
+<!DOCTYPE html>
+<html lang="en" class="light" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboDwn - Free Universal Video Downloader | TikTok, IG, FB</title>
+    <meta name="description" content="Download videos, reels, and shorts from TikTok, Instagram, Facebook, and X for free with TurboDwn.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#3b82f6', secondary: '#8b5cf6' } } } }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { transition: background-color 0.3s, color 0.3s; }
+        .gradient-text { background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex flex-col font-sans">
+
+    <!-- Navbar -->
+    <nav class="w-full bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='/'">
+                    <i class="fa-solid fa-bolt text-primary text-2xl"></i>
+                    <span class="font-bold text-2xl tracking-tight">Turbo<span class="text-primary">Dwn</span></span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="langToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fa-solid fa-language text-xl"></i><span id="currentLangText" class="ml-1 text-sm font-medium uppercase">EN</span>
+                    </button>
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i id="themeIcon" class="fa-solid fa-moon text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+        <div class="w-full max-w-3xl text-center space-y-8">
+            
+            <div class="space-y-4">
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                    <span data-i18n="heroTitle1">Download Any Video with</span> <br class="hidden sm:block" />
+                    <span class="gradient-text">TurboDwn</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300" data-i18n="heroSubtitle">
+                    Fast, free, and secure video downloader for TikTok, Instagram, FB, and more.
+                </p>
+            </div>
+
+            <!-- Download Form -->
+            <div class="bg-white dark:bg-gray-800 p-2 sm:p-4 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-2 transition-colors duration-300 border border-gray-100 dark:border-gray-700">
+                <div class="relative flex-grow">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none icon-container">
+                        <i class="fa-solid fa-link text-gray-400"></i>
+                    </div>
+                    <input type="url" id="videoUrl" class="block w-full pl-11 pr-4 py-4 rounded-xl border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent transition" placeholder="Paste video link here..." data-i18n-placeholder="inputPlaceholder" required>
+                </div>
+                <button id="searchBtn" onclick="handleSearch()" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-blue-600 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span id="searchBtnText" data-i18n="searchBtn">Search</span>
+                </button>
+            </div>
+
+            <!-- Result Card (Hidden by default) -->
+            <div id="resultCard" class="hidden bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 mt-6 text-left animate-fade-in">
+                <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                    <!-- Thumbnail -->
+                    <div class="w-full md:w-1/3 aspect-video md:aspect-square bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden shadow-sm">
+                        <img id="resThumbnail" src="" alt="Video Thumbnail" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Details & Buttons -->
+                    <div class="w-full md:w-2/3 flex flex-col gap-4">
+                        <h3 id="resTitle" class="text-lg font-bold text-gray-900 dark:text-white line-clamp-2">Video Title</h3>
+                        <div class="flex flex-col sm:flex-row gap-3 mt-auto pt-2">
+                            <a id="btnDownloadVideo" href="#" target="_blank" class="flex-1 px-4 py-3 bg-green-500 hover:bg-green-600 text-white text-center font-bold rounded-xl shadow transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-video"></i> <span data-i18n="dlVideoBtn">Download Video</span>
+                            </a>
+                            <a id="btnDownloadAudio" href="#" target="_blank" class="flex-1 px-4 py-3 bg-purple-500 hover:bg-purple-600 text-white text-center font-bold rounded-xl shadow transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-music"></i> <span data-i18n="dlAudioBtn">Download Audio</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message (Hidden by default) -->
+            <div id="errorMsg" class="hidden text-red-500 font-bold mt-4 text-sm sm:text-base"></div>
+
+            <!-- Platform Links -->
+            <div class="pt-8">
+                <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                    <a href="/tiktokdownload" class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center text-xl group-hover:scale-110 transition shadow-md"><i class="fa-brands fa-tiktok"></i></div>
+                        <span class="text-xs font-medium text-gray-600 dark:text-gray-300">TikTok</span>
+                    </a>
+                    <a href="/instagramdownload" class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 text-white flex items-center justify-center text-xl group-hover:scale-110 transition shadow-md"><i class="fa-brands fa-instagram"></i></div>
+                        <span class="text-xs font-medium text-gray-600 dark:text-gray-300">Instagram</span>
+                    </a>
+                    <a href="/facebookdownload" class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl group-hover:scale-110 transition shadow-md"><i class="fa-brands fa-facebook"></i></div>
+                        <span class="text-xs font-medium text-gray-600 dark:text-gray-300">Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 text-center transition-colors">
+        <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2026 TurboDwn. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // API Configuration (Based on your MainActivity.java)
+        const MY_SERVER_API = "https://turbo-saver-api.onrender.com/direct?url=";
+        const TIKTOK_FREE_API = "https://www.tikwm.com/api/?url=";
+
+        // Theme Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark'); themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark'); themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) { localStorage.theme = 'dark'; themeIcon.classList.replace('fa-moon', 'fa-sun'); } 
+            else { localStorage.theme = 'light'; themeIcon.classList.replace('fa-sun', 'fa-moon'); }
+        });
+
+        // i18n Logic
+        const translations = {
+            en: {
+                heroTitle1: "Download Any Video with", heroSubtitle: "Fast, free, and secure video downloader for TikTok, Instagram, FB, and more.",
+                inputPlaceholder: "Paste video link here...", searchBtn: "Search", processing: "Processing...",
+                dlVideoBtn: "Download Video", dlAudioBtn: "Download Audio", errorEmpty: "Please enter a valid link!", errorFetch: "Error processing the link. Please try again."
+            },
+            ar: {
+                heroTitle1: "حمّل أي فيديو بسهولة مع", heroSubtitle: "أسرع أداة لتحميل الفيديوهات من تيك توك، إنستغرام، وفيسبوك بجودة عالية.",
+                inputPlaceholder: "ضع رابط الفيديو هنا...", searchBtn: "بحث", processing: "جاري المعالجة...",
+                dlVideoBtn: "تحميل الفيديو", dlAudioBtn: "تحميل الصوت", errorEmpty: "الرجاء إدخال رابط صحيح!", errorFetch: "حدث خطأ أثناء جلب الفيديو. حاول مجدداً."
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || (navigator.language.startsWith('ar') ? 'ar' : 'en');
+        function applyLanguage(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => { if (t[el.getAttribute('data-i18n')]) el.innerHTML = t[el.getAttribute('data-i18n')]; });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { if (t[el.getAttribute('data-i18n-placeholder')]) el.setAttribute('placeholder', t[el.getAttribute('data-i18n-placeholder')]); });
+            
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl'); document.documentElement.setAttribute('lang', 'ar');
+                document.querySelector('.icon-container').classList.replace('left-0', 'right-0');
+                document.querySelector('.icon-container').classList.replace('pl-4', 'pr-4');
+                document.getElementById('videoUrl').classList.replace('pl-11', 'pr-11');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr'); document.documentElement.setAttribute('lang', 'en');
+                document.querySelector('.icon-container').classList.replace('right-0', 'left-0');
+                document.querySelector('.icon-container').classList.replace('pr-4', 'pl-4');
+                document.getElementById('videoUrl').classList.replace('pr-11', 'pl-11');
+            }
+            document.getElementById('currentLangText').innerText = lang.toUpperCase();
+            localStorage.setItem('lang', lang);
+        }
+        applyLanguage(currentLang);
+        document.getElementById('langToggle').addEventListener('click', () => { currentLang = currentLang === 'en' ? 'ar' : 'en'; applyLanguage(currentLang); });
+
+        // Search & API Logic
+        async function handleSearch() {
+            const urlInput = document.getElementById('videoUrl').value.trim();
+            const btnText = document.getElementById('searchBtnText');
+            const searchBtn = document.getElementById('searchBtn');
+            const resultCard = document.getElementById('resultCard');
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (!urlInput) {
+                showError(translations[currentLang].errorEmpty);
+                return;
+            }
+
+            // Reset UI
+            errorMsg.classList.add('hidden');
+            resultCard.classList.add('hidden');
+            btnText.innerHTML = translations[currentLang].processing;
+            searchBtn.disabled = true;
+            searchBtn.classList.add('opacity-70');
+
+            let isTikTok = urlInput.includes("tiktok.com");
+            let targetUrl = isTikTok ? (TIKTOK_FREE_API + urlInput) : (MY_SERVER_API + urlInput);
+
+            try {
+                const response = await fetch(targetUrl);
+                const jsonResponse = await response.json();
+
+                let urlVideo = "";
+                let urlAudio = "";
+                let title = "";
+                let thumb = "";
+
+                // Parsing Logic from MainActivity.java
+                if (isTikTok) {
+                    if (jsonResponse.data) {
+                        urlVideo = jsonResponse.data.hdplay || jsonResponse.data.play || "";
+                        urlAudio = jsonResponse.data.music || "";
+                        title = jsonResponse.data.title || "TikTok Video";
+                        thumb = jsonResponse.data.cover || "";
+                        
+                        if (urlVideo && !urlVideo.startsWith("http")) urlVideo = "https://www.tikwm.com" + urlVideo;
+                    }
+                } else {
+                    urlVideo = jsonResponse.video_url || jsonResponse.direct_url || "";
+                    urlAudio = jsonResponse.audio_url || urlVideo;
+                    title = jsonResponse.title || "Turbo Media Download";
+                    thumb = jsonResponse.thumbnail || jsonResponse.cover || "https://placehold.co/600x400?text=TurboDwn";
+                }
+
+                if (urlVideo) {
+                    // Show Results
+                    document.getElementById('resThumbnail').src = thumb;
+                    document.getElementById('resTitle').innerText = title;
+                    document.getElementById('btnDownloadVideo').href = urlVideo;
+                    
+                    if (urlAudio) {
+                        document.getElementById('btnDownloadAudio').href = urlAudio;
+                        document.getElementById('btnDownloadAudio').classList.remove('hidden');
+                    } else {
+                        document.getElementById('btnDownloadAudio').classList.add('hidden');
+                    }
+
+                    resultCard.classList.remove('hidden');
+                } else {
+                    showError(translations[currentLang].errorFetch);
+                }
+
+            } catch (error) {
+                console.error(error);
+                showError(translations[currentLang].errorFetch);
+            } finally {
+                // Restore Button
+                btnText.innerHTML = translations[currentLang].searchBtn;
+                searchBtn.disabled = false;
+                searchBtn.classList.remove('opacity-70');
+            }
+        }
+
+        function showError(msg) {
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.innerText = msg;
+            errorMsg.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
