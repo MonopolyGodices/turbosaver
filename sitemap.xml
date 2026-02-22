@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- الصفحة الرئيسية -->
+    <url>
+        <loc>https://turbodwn.com/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- صفحة تيك توك -->
+    <url>
+        <loc>https://turbodwn.com/tiktokdownload/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- صفحة إنستغرام -->
+    <url>
+        <loc>https://turbodwn.com/instagramdownload/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- صفحة فيسبوك -->
+    <url>
+        <loc>https://turbodwn.com/facebookdownload/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- صفحة تويتر -->
+    <url>
+        <loc>https://turbodwn.com/twitterdownload/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
