@@ -1,0 +1,1 @@
+User-agent: *Allow: /Sitemap: https://www.google.com/search?q=https://turbodwn.com/sitemap.xml
