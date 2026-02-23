@@ -1,8 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en" class="light" dir="ltr">
 <head>
-    <meta name="google-site-verification" content="Pjom1aOlmuNYGj0CF8mrvrNQZRamMm0D_ABSJjAu6Bc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TurboDwn - Free Universal Video Downloader | TikTok, IG, FB</title>
@@ -12,16 +10,17 @@
     <script>
         tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#3b82f6', secondary: '#8b5cf6' } } } }
     </script>
+    <!-- تم التحديث للإصدار 6.5.1 باش تخدم أيقونة X -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { transition: background-color 0.3s, color 0.3s; }
         .gradient-text { background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex flex-col font-sans">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex flex-col font-sans overflow-x-hidden">
 
     <!-- Navbar -->
-    <nav class="w-full bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300">
+    <nav class="w-full bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='/'">
@@ -29,10 +28,10 @@
                     <span class="font-bold text-2xl tracking-tight">Turbo<span class="text-primary">Dwn</span></span>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button id="langToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                    <button id="langToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Change Language">
                         <i class="fa-solid fa-language text-xl"></i><span id="currentLangText" class="ml-1 text-sm font-medium uppercase">EN</span>
                     </button>
-                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Dark Mode">
                         <i id="themeIcon" class="fa-solid fa-moon text-xl"></i>
                     </button>
                 </div>
@@ -41,41 +40,40 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-        <div class="w-full max-w-3xl text-center space-y-8">
+    <main class="flex-grow flex flex-col items-center px-4 py-12 sm:px-6 lg:px-8 w-full">
+        <div class="w-full max-w-4xl text-center space-y-10">
             
+            <!-- Hero Section -->
             <div class="space-y-4">
-                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
                     <span data-i18n="heroTitle1">Download Any Video with</span> <br class="hidden sm:block" />
                     <span class="gradient-text">TurboDwn</span>
                 </h1>
-                <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300" data-i18n="heroSubtitle">
+                <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-i18n="heroSubtitle">
                     Fast, free, and secure video downloader for TikTok, Instagram, FB, and more.
                 </p>
             </div>
 
             <!-- Download Form -->
-            <div class="bg-white dark:bg-gray-800 p-2 sm:p-4 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-2 transition-colors duration-300 border border-gray-100 dark:border-gray-700">
+            <div class="bg-white dark:bg-gray-800 p-2 sm:p-4 rounded-2xl shadow-xl flex flex-col sm:flex-row gap-2 transition-colors duration-300 border border-gray-100 dark:border-gray-700 relative z-10">
                 <div class="relative flex-grow">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none icon-container">
                         <i class="fa-solid fa-link text-gray-400"></i>
                     </div>
-                    <input type="url" id="videoUrl" class="block w-full pl-11 pr-4 py-4 rounded-xl border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent transition" placeholder="Paste video link here..." data-i18n-placeholder="inputPlaceholder" required>
+                    <input type="url" id="videoUrl" class="block w-full pl-11 pr-4 py-4 rounded-xl border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent transition text-lg" placeholder="Paste video link here..." data-i18n-placeholder="inputPlaceholder" required>
                 </div>
-                <button id="searchBtn" onclick="handleSearch()" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-blue-600 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                <button id="searchBtn" onclick="handleSearch()" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-blue-600 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-lg">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span id="searchBtnText" data-i18n="searchBtn">Search</span>
                 </button>
             </div>
 
             <!-- Result Card (Hidden by default) -->
-            <div id="resultCard" class="hidden bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 mt-6 text-left animate-fade-in">
+            <div id="resultCard" class="hidden bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 mt-6 text-left transition-all">
                 <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                    <!-- Thumbnail -->
                     <div class="w-full md:w-1/3 aspect-video md:aspect-square bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden shadow-sm">
                         <img id="resThumbnail" src="" alt="Video Thumbnail" class="w-full h-full object-cover">
                     </div>
-                    <!-- Details & Buttons -->
                     <div class="w-full md:w-2/3 flex flex-col gap-4">
                         <h3 id="resTitle" class="text-lg font-bold text-gray-900 dark:text-white line-clamp-2">Video Title</h3>
                         <div class="flex flex-col sm:flex-row gap-3 mt-auto pt-2">
@@ -90,42 +88,128 @@
                 </div>
             </div>
 
-            <!-- Error Message (Hidden by default) -->
             <div id="errorMsg" class="hidden text-red-500 font-bold mt-4 text-sm sm:text-base"></div>
 
             <!-- Platform Links -->
-            <div class="pt-8">
-                <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
-                    <a href="/tiktokdownload" class="flex flex-col items-center gap-2 group">
-                        <div class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center text-xl group-hover:scale-110 transition shadow-md"><i class="fa-brands fa-tiktok"></i></div>
-                        <span class="text-xs font-medium text-gray-600 dark:text-gray-300">TikTok</span>
+            <div class="pt-6">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-semibold uppercase tracking-wider" data-i18n="supportedPlatforms">Supported Platforms</p>
+                <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
+                    <a href="tiktokdownload/" class="flex flex-col items-center gap-2 group">
+                        <div class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center text-2xl group-hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-tiktok"></i></div>
+                        <span class="text-xs font-bold text-gray-600 dark:text-gray-300">TikTok</span>
                     </a>
-                    <a href="/instagramdownload" class="flex flex-col items-center gap-2 group">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 text-white flex items-center justify-center text-xl group-hover:scale-110 transition shadow-md"><i class="fa-brands fa-instagram"></i></div>
-                        <span class="text-xs font-medium text-gray-600 dark:text-gray-300">Instagram</span>
+                    <a href="instagramdownload/" class="flex flex-col items-center gap-2 group">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 text-white flex items-center justify-center text-2xl group-hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-instagram"></i></div>
+                        <span class="text-xs font-bold text-gray-600 dark:text-gray-300">Instagram</span>
                     </a>
-                    <a href="/facebookdownload" class="flex flex-col items-center gap-2 group">
-                        <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl group-hover:scale-110 transition shadow-md"><i class="fa-brands fa-facebook"></i></div>
-                        <span class="text-xs font-medium text-gray-600 dark:text-gray-300">Facebook</span>
+                    <a href="facebookdownload/" class="flex flex-col items-center gap-2 group">
+                        <div class="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl group-hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-facebook"></i></div>
+                        <span class="text-xs font-bold text-gray-600 dark:text-gray-300">Facebook</span>
                     </a>
                     <a href="twitterdownload/" class="flex flex-col items-center gap-2 group">
-    <div class="w-12 h-12 rounded-full bg-gray-900 dark:bg-white dark:text-black text-white flex items-center justify-center text-xl group-hover:scale-110 transition shadow-md">
-        <i class="fa-brands fa-x-twitter"></i>
-    </div>
-    <span class="text-xs font-medium text-gray-600 dark:text-gray-300">X (Twitter)</span>
-</a>
+                        <div class="w-14 h-14 rounded-full bg-gray-900 dark:bg-white dark:text-black text-white flex items-center justify-center text-2xl group-hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-x-twitter"></i></div>
+                        <span class="text-xs font-bold text-gray-600 dark:text-gray-300">X (Twitter)</span>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="border-gray-200 dark:border-gray-700 my-10 w-full max-w-2xl mx-auto">
+
+            <!-- 🛠️ NEW: How to Download Section -->
+            <div class="w-full text-center">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-8" data-i18n="howToTitle">How to Download Videos?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary flex items-center justify-center text-2xl mb-4 font-bold shadow-sm">1</div>
+                        <h3 class="text-lg font-bold mb-2" data-i18n="step1Title">Copy the Link</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="step1Desc">Open the app (TikTok, IG, etc.), find the video you want, and copy its share link.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary flex items-center justify-center text-2xl mb-4 font-bold shadow-sm">2</div>
+                        <h3 class="text-lg font-bold mb-2" data-i18n="step2Title">Paste it Here</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="step2Desc">Come back to TurboDwn, paste the link into the search box above, and click Search.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary flex items-center justify-center text-2xl mb-4 font-bold shadow-sm">3</div>
+                        <h3 class="text-lg font-bold mb-2" data-i18n="step3Title">Download File</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="step3Desc">Choose Video (MP4) or Audio (MP3) format and save it directly to your device.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🚀 NEW: Features Section -->
+            <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-10 shadow-lg border border-gray-100 dark:border-gray-700 w-full text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-500 flex items-center justify-center text-xl"><i class="fa-solid fa-droplet-slash"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1" data-i18n="feat1Title">No Watermark</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat1Desc">Download TikTok videos completely clean without any annoying logos.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-500 flex items-center justify-center text-xl"><i class="fa-solid fa-bolt"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1" data-i18n="feat2Title">Ultra Fast & Free</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat2Desc">Unlimited downloads at the highest possible speeds. 100% free forever.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-500 flex items-center justify-center text-xl"><i class="fa-solid fa-display"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1" data-i18n="feat3Title">High Quality HD</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat3Desc">We extract the best available quality (HD MP4) directly from the source.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-500 flex items-center justify-center text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1" data-i18n="feat4Title">Safe & Private</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="feat4Desc">We don't track your downloads or store your data. Completely anonymous.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ❓ NEW: FAQ Section -->
+            <div class="w-full text-left pt-6">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center" data-i18n="faqTitle">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i class="fa-solid fa-circle-question text-primary"></i> <span data-i18n="q1">Is this service completely free?</span></h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="a1">Yes! TurboDwn is 100% free to use. You can download as many videos as you want without any limits or hidden fees.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i class="fa-solid fa-circle-question text-primary"></i> <span data-i18n="q2">Where are the downloaded videos saved?</span></h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="a2">Videos are typically saved to your device's default "Downloads" folder. On mobile, they might also appear in your Gallery/Photos app.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i class="fa-solid fa-circle-question text-primary"></i> <span data-i18n="q3">Do I need to install an app?</span></h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="a3">No installation is required. TurboDwn works directly in your web browser on any device (Android, iOS, Windows, Mac).</p>
+                    </div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 text-center transition-colors">
-        <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2026 TurboDwn. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 text-center transition-colors w-full mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-4">
+            <div class="flex gap-4 text-sm font-medium">
+                <a href="#" class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition" data-i18n="privacyPolicy">Privacy Policy</a>
+                <span class="text-gray-300 dark:text-gray-600">|</span>
+                <a href="#" class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition" data-i18n="termsOfUse">Terms of Use</a>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2026 TurboDwn. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        // API Configuration (Based on your MainActivity.java)
+        // API Configuration
         const MY_SERVER_API = "https://turbo-saver-api.onrender.com/direct?url=";
         const TIKTOK_FREE_API = "https://www.tikwm.com/api/?url=";
 
@@ -143,17 +227,47 @@
             else { localStorage.theme = 'light'; themeIcon.classList.replace('fa-sun', 'fa-moon'); }
         });
 
-        // i18n Logic
+        // 🌐 i18n Logic (تم إضافة الترجمات الجديدة)
         const translations = {
             en: {
                 heroTitle1: "Download Any Video with", heroSubtitle: "Fast, free, and secure video downloader for TikTok, Instagram, FB, and more.",
                 inputPlaceholder: "Paste video link here...", searchBtn: "Search", processing: "Processing...",
-                dlVideoBtn: "Download Video", dlAudioBtn: "Download Audio", errorEmpty: "Please enter a valid link!", errorFetch: "Error processing the link. Please try again."
+                dlVideoBtn: "Download Video", dlAudioBtn: "Download Audio", errorEmpty: "Please enter a valid link!", errorFetch: "Error processing the link. Please try again.",
+                supportedPlatforms: "Supported Platforms",
+                // New additions
+                howToTitle: "How to Download Videos?",
+                step1Title: "Copy the Link", step1Desc: "Open the app (TikTok, IG, etc.), find the video you want, and copy its share link.",
+                step2Title: "Paste it Here", step2Desc: "Come back to TurboDwn, paste the link into the search box above, and click Search.",
+                step3Title: "Download File", step3Desc: "Choose Video (MP4) or Audio (MP3) format and save it directly to your device.",
+                feat1Title: "No Watermark", feat1Desc: "Download TikTok videos completely clean without any annoying logos.",
+                feat2Title: "Ultra Fast & Free", feat2Desc: "Unlimited downloads at the highest possible speeds. 100% free forever.",
+                feat3Title: "High Quality HD", feat3Desc: "We extract the best available quality (HD MP4) directly from the source.",
+                feat4Title: "Safe & Private", feat4Desc: "We don't track your downloads or store your data. Completely anonymous.",
+                faqTitle: "Frequently Asked Questions",
+                q1: "Is this service completely free?", a1: "Yes! TurboDwn is 100% free to use. You can download as many videos as you want without any limits or hidden fees.",
+                q2: "Where are the downloaded videos saved?", a2: "Videos are typically saved to your device's default 'Downloads' folder. On mobile, they might also appear in your Gallery/Photos app.",
+                q3: "Do I need to install an app?", a3: "No installation is required. TurboDwn works directly in your web browser on any device (Android, iOS, Windows, Mac).",
+                privacyPolicy: "Privacy Policy", termsOfUse: "Terms of Use"
             },
             ar: {
                 heroTitle1: "حمّل أي فيديو بسهولة مع", heroSubtitle: "أسرع أداة لتحميل الفيديوهات من تيك توك، إنستغرام، وفيسبوك بجودة عالية.",
                 inputPlaceholder: "ضع رابط الفيديو هنا...", searchBtn: "بحث", processing: "جاري المعالجة...",
-                dlVideoBtn: "تحميل الفيديو", dlAudioBtn: "تحميل الصوت", errorEmpty: "الرجاء إدخال رابط صحيح!", errorFetch: "حدث خطأ أثناء جلب الفيديو. حاول مجدداً."
+                dlVideoBtn: "تحميل الفيديو", dlAudioBtn: "تحميل الصوت", errorEmpty: "الرجاء إدخال رابط صحيح!", errorFetch: "حدث خطأ أثناء جلب الفيديو. حاول مجدداً.",
+                supportedPlatforms: "المنصات المدعومة",
+                // New additions
+                howToTitle: "كيفية تحميل الفيديوهات؟",
+                step1Title: "انسخ الرابط", step1Desc: "افتح التطبيق (تيك توك، إنستغرام...)، ابحث عن الفيديو الذي تريده، وانسخ رابط المشاركة الخاص به.",
+                step2Title: "الصق الرابط هنا", step2Desc: "عد إلى موقعنا، الصق الرابط في مربع البحث بالأعلى، واضغط على زر 'بحث'.",
+                step3Title: "حمّل الملف", step3Desc: "اختر صيغة الفيديو (MP4) أو الصوت (MP3) واحفظه مباشرة على جهازك.",
+                feat1Title: "بدون علامة مائية", feat1Desc: "حمل فيديوهات تيك توك نظيفة تماماً وبدون أي شعارات أو علامات مائية مزعجة.",
+                feat2Title: "سريع جداً ومجاني", feat2Desc: "تحميلات غير محدودة بأعلى سرعة ممكنة. مجاني 100% وإلى الأبد.",
+                feat3Title: "جودة عالية HD", feat3Desc: "نقوم باستخراج أفضل جودة متاحة للفيديو (HD) مباشرة من المصدر الأصلي.",
+                feat4Title: "آمن وخاص", feat4Desc: "لا نقوم بتتبع تحميلاتك أو حفظ بياناتك. استخدامك للموقع مجهول تماماً.",
+                faqTitle: "الأسئلة الشائعة",
+                q1: "هل هذا الموقع مجاني بالكامل؟", a1: "نعم! موقعنا مجاني 100%. يمكنك تحميل أي عدد تريده من الفيديوهات بدون حدود أو رسوم خفية.",
+                q2: "أين يتم حفظ الفيديوهات التي أحملها؟", a2: "عادةً ما يتم حفظ الفيديوهات في مجلد 'التنزيلات' (Downloads) في جهازك. في الهواتف، قد تظهر أيضاً في تطبيق المعرض/الصور.",
+                q3: "هل أحتاج إلى تثبيت تطبيق؟", a3: "لا تحتاج لتثبيت أي شيء. الموقع يعمل مباشرة من متصفحك على أي جهاز (أندرويد، آيفون، كمبيوتر).",
+                privacyPolicy: "سياسة الخصوصية", termsOfUse: "شروط الاستخدام"
             }
         };
 
@@ -180,7 +294,7 @@
         applyLanguage(currentLang);
         document.getElementById('langToggle').addEventListener('click', () => { currentLang = currentLang === 'en' ? 'ar' : 'en'; applyLanguage(currentLang); });
 
-        // Search & API Logic
+        // Search API Logic
         async function handleSearch() {
             const urlInput = document.getElementById('videoUrl').value.trim();
             const btnText = document.getElementById('searchBtnText');
@@ -188,81 +302,55 @@
             const resultCard = document.getElementById('resultCard');
             const errorMsg = document.getElementById('errorMsg');
 
-            if (!urlInput) {
-                showError(translations[currentLang].errorEmpty);
-                return;
-            }
+            if (!urlInput) { showError(translations[currentLang].errorEmpty); return; }
 
-            // Reset UI
-            errorMsg.classList.add('hidden');
-            resultCard.classList.add('hidden');
-            btnText.innerHTML = translations[currentLang].processing;
-            searchBtn.disabled = true;
-            searchBtn.classList.add('opacity-70');
+            errorMsg.classList.add('hidden'); resultCard.classList.add('hidden');
+            btnText.innerHTML = translations[currentLang].processing; searchBtn.disabled = true; searchBtn.classList.add('opacity-70');
 
             let isTikTok = urlInput.includes("tiktok.com");
-            let targetUrl = isTikTok ? (TIKTOK_FREE_API + urlInput) : (MY_SERVER_API + urlInput);
+            let targetUrl = isTikTok ? (TIKTOK_FREE_API + encodeURIComponent(urlInput)) : (MY_SERVER_API + encodeURIComponent(urlInput));
 
             try {
                 const response = await fetch(targetUrl);
                 const jsonResponse = await response.json();
 
-                let urlVideo = "";
-                let urlAudio = "";
-                let title = "";
-                let thumb = "";
+                let urlVideo = ""; let urlAudio = ""; let title = ""; let thumb = "";
 
-                // Parsing Logic from MainActivity.java
                 if (isTikTok) {
                     if (jsonResponse.data) {
                         urlVideo = jsonResponse.data.hdplay || jsonResponse.data.play || "";
                         urlAudio = jsonResponse.data.music || "";
                         title = jsonResponse.data.title || "TikTok Video";
                         thumb = jsonResponse.data.cover || "";
-                        
                         if (urlVideo && !urlVideo.startsWith("http")) urlVideo = "https://www.tikwm.com" + urlVideo;
                     }
                 } else {
-                    urlVideo = jsonResponse.video_url || jsonResponse.direct_url || "";
-                    urlAudio = jsonResponse.audio_url || urlVideo;
-                    title = jsonResponse.title || "Turbo Media Download";
-                    thumb = jsonResponse.thumbnail || jsonResponse.cover || "https://placehold.co/600x400?text=TurboDwn";
+                    if (jsonResponse.status === "success" && jsonResponse.video_url) {
+                        urlVideo = jsonResponse.video_url;
+                        urlAudio = jsonResponse.audio_url || urlVideo;
+                        title = jsonResponse.title || "Media Download";
+                        thumb = jsonResponse.thumbnail || "";
+                    }
                 }
 
                 if (urlVideo) {
-                    // Show Results
-                    document.getElementById('resThumbnail').src = thumb;
+                    if(thumb) { document.getElementById('resThumbnail').src = thumb; document.getElementById('resThumbnail').parentElement.classList.remove('hidden'); } 
+                    else { document.getElementById('resThumbnail').parentElement.classList.add('hidden'); }
                     document.getElementById('resTitle').innerText = title;
                     document.getElementById('btnDownloadVideo').href = urlVideo;
                     
-                    if (urlAudio) {
-                        document.getElementById('btnDownloadAudio').href = urlAudio;
-                        document.getElementById('btnDownloadAudio').classList.remove('hidden');
-                    } else {
-                        document.getElementById('btnDownloadAudio').classList.add('hidden');
-                    }
-
+                    if (urlAudio) { document.getElementById('btnDownloadAudio').href = urlAudio; document.getElementById('btnDownloadAudio').classList.remove('hidden'); } 
+                    else { document.getElementById('btnDownloadAudio').classList.add('hidden'); }
                     resultCard.classList.remove('hidden');
-                } else {
-                    showError(translations[currentLang].errorFetch);
-                }
+                } else { showError(translations[currentLang].errorFetch); }
 
-            } catch (error) {
-                console.error(error);
-                showError(translations[currentLang].errorFetch);
-            } finally {
-                // Restore Button
-                btnText.innerHTML = translations[currentLang].searchBtn;
-                searchBtn.disabled = false;
-                searchBtn.classList.remove('opacity-70');
-            }
+            } catch (error) { console.error(error); showError(translations[currentLang].errorFetch); } 
+            finally { btnText.innerHTML = translations[currentLang].searchBtn; searchBtn.disabled = false; searchBtn.classList.remove('opacity-70'); }
         }
 
-        function showError(msg) {
-            const errorMsg = document.getElementById('errorMsg');
-            errorMsg.innerText = msg;
-            errorMsg.classList.remove('hidden');
-        }
+        function showError(msg) { const errorMsg = document.getElementById('errorMsg'); errorMsg.innerText = msg; errorMsg.classList.remove('hidden'); }
     </script>
 </body>
 </html>
+
+
