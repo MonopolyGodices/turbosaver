@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="light" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use | TurboDwn</title>
+    <meta name="description" content="Terms of Use for TurboDwn Video Downloader.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#3b82f6' } } } }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>body { transition: background-color 0.3s, color 0.3s; }</style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex flex-col font-sans">
+
+    <!-- Navbar -->
+    <nav class="w-full bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='../'">
+                    <i class="fa-solid fa-bolt text-primary text-2xl"></i>
+                    <span class="font-bold text-2xl tracking-tight">Turbo<span class="text-primary">Dwn</span></span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Dark Mode">
+                        <i id="themeIcon" class="fa-solid fa-moon text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 w-full">
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-12 shadow-lg border border-gray-100 dark:border-gray-700">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-8 text-center text-primary">Terms of Use</h1>
+            <p class="text-gray-500 dark:text-gray-400 mb-8 text-center">Last updated: February 2026</p>
+
+            <div class="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+                <section>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">1. Acceptance of Terms</h2>
+                    <p>By accessing and using TurboDwn (the "Service"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to abide by these terms, please do not use this Service.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">2. Description of Service</h2>
+                    <p>TurboDwn is a free online tool that allows users to download videos and audio from various public social media platforms. The Service acts only as a technical conduit to help users download publicly available content.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">3. Copyright & Fair Use</h2>
+                    <p>TurboDwn respects intellectual property rights. We do not host, store, or distribute any copyrighted material on our servers. The tool is designed strictly for personal, non-commercial, and fair use purposes.</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-400">
+                        <li>Users are solely responsible for checking the copyright status of the videos they download.</li>
+                        <li>You must not use this tool to download copyrighted material without the explicit permission of the copyright owner.</li>
+                        <li>Any commercial use or redistribution of the downloaded content without permission is strictly prohibited.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">4. Limitation of Liability</h2>
+                    <p>TurboDwn is provided on an "AS IS" and "AS AVAILABLE" basis. We make no guarantees regarding the continuous availability of the service. In no event shall TurboDwn be liable for any direct, indirect, incidental, or consequential damages arising out of your use or inability to use the Service.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">5. Service Modifications</h2>
+                    <p>We reserve the right to modify, pause, or discontinue the Service (or any part thereof) at any time, temporarily or permanently, with or without notice.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">6. Changes to Terms</h2>
+                    <p>TurboDwn may revise these Terms of Use for its website at any time without notice. By using this website, you are agreeing to be bound by the current version of these Terms.</p>
+                </section>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="../" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-bold rounded-xl transition">
+                    &larr; Back to Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 text-center transition-colors w-full mt-auto">
+        <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2026 TurboDwn. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark'); themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark'); themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) { localStorage.theme = 'dark'; themeIcon.classList.replace('fa-moon', 'fa-sun'); } 
+            else { localStorage.theme = 'light'; themeIcon.classList.replace('fa-sun', 'fa-moon'); }
+        });
+    </script>
+</body>
+</html>
+
