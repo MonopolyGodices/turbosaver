@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 🛡️ حماية الـ SEO -->
+    <!-- 🛡️ حماية الـ SEO: جوجل مغاديش يأرشف هاد الصفحة -->
     <meta name="robots" content="noindex, nofollow">
     <title>Restricted Content | TurboDwn</title>
     
@@ -36,7 +36,7 @@
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex flex-col font-sans overflow-x-hidden">
 
-    <!-- Navbar with Language & Theme Toggle -->
+    <!-- Navbar -->
     <nav class="w-full bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300 sticky top-0 z-50 border-b border-red-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -95,27 +95,29 @@
                 <p id="percentageText" class="text-xs text-gray-400 mt-2 font-mono">0%</p>
             </div>
 
-            <!-- 3. Ready State -->
+            <!-- 3. Ready State (Isolated - No Redirect to Home) -->
             <div id="readyUI" class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-white dark:bg-gray-800 px-4 text-center">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 dark:bg-green-900/30 text-green-500 rounded-full flex items-center justify-center text-3xl sm:text-4xl mb-4 shadow-sm">
                     <i class="fa-solid fa-unlock-keyhole"></i>
                 </div>
                 <h2 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white" data-i18n="unlockedTitle">Content Unlocked!</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-sm text-sm" data-i18n="unlockedDesc">The video is ready. You will be redirected automatically to the secure player...</p>
-                <button onclick="window.location.href='../'" class="px-6 py-3 sm:px-8 sm:py-4 bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white font-bold rounded-xl shadow-lg transition flex items-center gap-2">
-                    <span data-i18n="openVideoBtn">Open Full Video</span> <i class="fa-solid fa-arrow-right"></i>
+                <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-sm text-sm" data-i18n="unlockedDesc">The video stream is ready. Click the button below to view or download the media file.</p>
+                
+                <!-- 🛡️ هذا هو الزر الآمن: كيفتح الفيديو الفيروسي فصفحة جديدة ومكيقيسش الصفحة الرئيسية -->
+                <button onclick="openViralVideo()" class="px-6 py-3 sm:px-8 sm:py-4 bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white font-bold rounded-xl shadow-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i> <span data-i18n="downloadVideoBtn">Download Video (MP4)</span>
                 </button>
             </div>
         </div>
         
-        <!-- 💡 NEW: Explanation Section (Keeps user reading while waiting) -->
+        <!-- Explanation Section -->
         <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary flex items-center justify-center"><i class="fa-solid fa-circle-play"></i></div>
                     <h3 class="font-bold text-lg" data-i18n="howToTitle">How to watch?</h3>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="howToDesc">Click the play button above. Wait for the decryption process to reach 100%, then click 'Open Full Video' to safely stream or download the requested media.</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="howToDesc">Click the play button above. Wait for the decryption process to reach 100%, then click 'Download Video' to get the requested media securely.</p>
             </div>
             
             <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
@@ -123,7 +125,7 @@
                     <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 text-red-500 flex items-center justify-center"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3 class="font-bold text-lg" data-i18n="whyWaitTitle">Why wait 30 seconds?</h3>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="whyWaitDesc">To protect your privacy and bypass social media filters (like Facebook/TikTok blocks), our servers need this time to encrypt your connection and generate a fresh, untrackable secure link.</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="whyWaitDesc">To protect your privacy and bypass social media filters (like Facebook blocks), our servers need this time to encrypt your connection and generate a fresh, untrackable secure link.</p>
             </div>
         </div>
 
@@ -151,12 +153,12 @@
                 connecting: "Initializing Bypass...",
                 waitText: "Do not close this page. Decrypting the original video source.",
                 unlockedTitle: "Content Unlocked!",
-                unlockedDesc: "The video is ready. You will be redirected automatically to the secure player...",
-                openVideoBtn: "Open Full Video",
+                unlockedDesc: "The video stream is ready. Click the button below to view or download the media file.",
+                downloadVideoBtn: "Download Video (MP4)",
                 howToTitle: "How to watch?",
-                howToDesc: "Click the play button above. Wait for the decryption process to reach 100%, then click 'Open Full Video' to safely stream or download the requested media.",
+                howToDesc: "Click the play button above. Wait for the decryption process to reach 100%, then click 'Download Video' to get the requested media securely.",
                 whyWaitTitle: "Why wait 30 seconds?",
-                whyWaitDesc: "To protect your privacy and bypass social media filters (like Facebook blocks), our servers need this time to encrypt your connection and generate a fresh, untrackable secure link.",
+                whyWaitDesc: "To protect your privacy and bypass social media filters, our servers need this time to encrypt your connection and generate a fresh, untrackable link.",
                 privacyPolicy: "Privacy Policy", termsOfUse: "Terms of Use"
             },
             ar: {
@@ -166,12 +168,12 @@
                 connecting: "جاري تخطي الحماية...",
                 waitText: "لا تغلق هذه الصفحة. جاري فك تشفير مصدر الفيديو الأصلي.",
                 unlockedTitle: "تم فتح المحتوى!",
-                unlockedDesc: "الفيديو جاهز الآن. سيتم توجيهك تلقائياً إلى المشغل الآمن...",
-                openVideoBtn: "مشاهدة الفيديو كاملاً",
+                unlockedDesc: "ملف الفيديو جاهز الآن. انقر على الزر أدناه لمشاهدة أو تحميل الملف بأمان.",
+                downloadVideoBtn: "تحميل الفيديو (MP4)",
                 howToTitle: "طريقة المشاهدة؟",
-                howToDesc: "اضغط على زر التشغيل أعلاه. انتظر حتى تصل عملية فك التشفير إلى 100٪، ثم انقر على 'مشاهدة الفيديو كاملاً' للمشاهدة أو التحميل بأمان.",
+                howToDesc: "اضغط على زر التشغيل أعلاه. انتظر حتى تصل عملية فك التشفير إلى 100٪، ثم انقر على 'تحميل الفيديو' للحصول عليه بأمان.",
                 whyWaitTitle: "لماذا يجب الانتظار 30 ثانية؟",
-                whyWaitDesc: "لحماية خصوصيتك وتخطي فلاتر الحماية في مواقع التواصل (مثل حظر فيسبوك)، تحتاج خوادمنا لهذا الوقت لتشفير اتصالك وتوليد رابط آمن لا يمكن تتبعه.",
+                whyWaitDesc: "لحماية خصوصيتك وتخطي فلاتر الحماية في مواقع التواصل، تحتاج خوادمنا لهذا الوقت لتشفير اتصالك وتوليد رابط آمن.",
                 privacyPolicy: "سياسة الخصوصية", termsOfUse: "شروط الاستخدام"
             }
         };
@@ -206,7 +208,7 @@
             else { localStorage.theme = 'light'; themeIcon.classList.replace('fa-sun', 'fa-moon'); }
         });
 
-        // Player Logic with Auto-Redirect
+        // Player Logic 
         const msgEn = [ "Checking age restrictions (18+)...", "Bypassing social media safety filters...", "Connecting to uncensored server...", "Decrypting private video file...", "Buffering high-quality stream...", "Finalizing secure access..." ];
         const msgAr = [ "جاري التحقق من العمر (18+)...", "جاري تخطي فلاتر الحماية والرقابة...", "الاتصال بخادم غير خاضع للرقابة...", "جاري فك تشفير ملف الفيديو السري...", "تجهيز البث بجودة عالية...", "اللمسات الأخيرة للوصول الآمن..." ];
 
@@ -246,11 +248,16 @@
         function showReadyState() {
             document.getElementById('loadingUI').classList.add('hidden');
             document.getElementById('readyUI').classList.remove('hidden');
+            // 🛡️ الملاحظة: حيدنا التوجيه التلقائي باش نحميو الـ Bounce Rate ديالك.
+        }
+
+        // 🚀 الفانكشن الخاصة بتوجيه الزائر للفيديو الفيروسي أو رابط الإعلان
+        function openViralVideo() {
+            // 👇 هنا أ السي أنيس غتحط الرابط ديال الفيديو اللي كينتاظرو الزائر، أو رابط Adsterra (Direct Link)
+            const videoOrAdLink = "https://example.com/viral-lion-video.mp4"; 
             
-            // 🚀 الإضافة الجديدة: إعادة التوجيه التلقائي بعد 3 ثواني من الظهور
-            setTimeout(() => {
-                window.location.href = '../';
-            }, 3000);
+            // كيتفتح فـ نافذة جديدة باش الزائر كيبقى فالموقع ديالك وكتتحسب ليه الجلسة مزيان
+            window.open(videoOrAdLink, '_blank'); 
         }
     </script>
 </body>
