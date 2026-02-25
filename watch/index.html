@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 🛡️ حماية الـ SEO: جوجل مغاديش يأرشف هاد الصفحة -->
+    <!-- 🛡️ حماية الـ SEO -->
     <meta name="robots" content="noindex, nofollow">
     <title>Restricted Content | TurboDwn</title>
     
@@ -22,8 +22,8 @@
         }
         .dark .video-bg { filter: blur(15px) brightness(0.2) grayscale(0.6); }
 
-        .media-wave { display: flex; align-items: flex-end; justify-content: center; gap: 8px; height: 60px; margin-bottom: 24px; }
-        .media-wave div { width: 8px; background-color: #ef4444; border-radius: 4px; animation: wave-action 1.2s ease-in-out infinite; }
+        .media-wave { display: flex; align-items: flex-end; justify-content: center; gap: 6px; height: 50px; margin-bottom: 20px; }
+        .media-wave div { width: 6px; background-color: #ef4444; border-radius: 4px; animation: wave-action 1.2s ease-in-out infinite; }
         .dark .media-wave div { box-shadow: 0 0 15px rgba(239, 68, 68, 0.8); }
         .media-wave div:nth-child(1) { animation-delay: 0.0s; } .media-wave div:nth-child(2) { animation-delay: 0.2s; }
         .media-wave div:nth-child(3) { animation-delay: 0.4s; } .media-wave div:nth-child(4) { animation-delay: 0.6s; }
@@ -45,11 +45,11 @@
                     <span class="font-bold text-2xl tracking-tight">Turbo<span class="text-danger">Dwn</span></span>
                 </div>
                 <div class="flex items-center gap-3">
-                    <span class="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs font-black px-2 py-1 rounded border border-red-200 dark:border-red-800 mr-2">18+</span>
-                    <button id="langToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Change Language">
-                        <i class="fa-solid fa-language text-xl"></i><span id="currentLangText" class="ml-1 text-sm font-medium uppercase">EN</span>
+                    <span class="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs font-black px-2 py-1 rounded border border-red-200 dark:border-red-800 mr-1 sm:mr-2">18+</span>
+                    <button id="langToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center justify-center" aria-label="Change Language">
+                        <i class="fa-solid fa-language text-xl"></i><span id="currentLangText" class="ml-1 text-sm font-medium uppercase hidden sm:inline-block">EN</span>
                     </button>
-                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Dark Mode">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center justify-center" aria-label="Dark Mode">
                         <i id="themeIcon" class="fa-solid fa-moon text-xl"></i>
                     </button>
                 </div>
@@ -58,74 +58,74 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow flex flex-col items-center px-4 py-8 w-full max-w-4xl mx-auto">
+    <main class="flex-grow flex flex-col items-center px-4 py-6 sm:py-8 w-full max-w-4xl mx-auto">
         
         <div class="text-center mb-6 space-y-2">
-            <div class="inline-flex items-center justify-center bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-full mb-2">
-                <i class="fa-solid fa-triangle-exclamation text-2xl"></i>
+            <div class="inline-flex items-center justify-center bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-2 sm:p-3 rounded-full mb-1 sm:mb-2">
+                <i class="fa-solid fa-triangle-exclamation text-xl sm:text-2xl"></i>
             </div>
-            <h1 class="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white" data-i18n="warningTitle">Sensitive Content Warning</h1>
-            <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base max-w-md mx-auto" data-i18n="warningDesc">This video may contain graphic or restricted content. Viewer discretion is advised.</p>
+            <h1 class="text-xl sm:text-3xl font-black text-gray-900 dark:text-white" data-i18n="warningTitle">Sensitive Content Warning</h1>
+            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-base max-w-md mx-auto" data-i18n="warningDesc">This video may contain graphic or restricted content. Viewer discretion is advised.</p>
         </div>
 
-        <!-- Player Container -->
-        <div class="w-full aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col items-center justify-center transition-colors mb-10">
+        <!-- Player Container: Changed to aspect-[4/3] on mobile for more vertical space, aspect-video on sm+ -->
+        <div class="w-full aspect-[4/3] sm:aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col items-center justify-center transition-colors mb-8">
             
             <div class="absolute inset-0 video-bg z-0"></div>
 
             <!-- 1. Initial State -->
             <div id="initialUI" class="absolute inset-0 z-10 flex flex-col items-center justify-center cursor-pointer group" onclick="startProcessing()">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 bg-danger/90 text-white rounded-full flex items-center justify-center alert-pulse group-hover:bg-red-600 group-hover:scale-110 transition-all duration-300 backdrop-blur-md border border-white/20">
-                    <i class="fa-solid fa-play text-3xl sm:text-4xl ml-2"></i>
+                <div class="w-16 h-16 sm:w-24 sm:h-24 bg-danger/90 text-white rounded-full flex items-center justify-center alert-pulse group-hover:bg-red-600 group-hover:scale-110 transition-all duration-300 backdrop-blur-md border border-white/20">
+                    <i class="fa-solid fa-play text-2xl sm:text-4xl ml-1 sm:ml-2"></i>
                 </div>
-                <p class="mt-6 font-bold text-white bg-black/60 px-5 py-2 rounded-full backdrop-blur-md border border-white/10 uppercase tracking-widest text-xs sm:text-sm">
-                    <i class="fa-solid fa-eye-slash mr-2"></i> <span data-i18n="clickToWatch">Watch Uncensored</span>
+                <p class="mt-4 sm:mt-6 font-bold text-white bg-black/60 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 uppercase tracking-widest text-[10px] sm:text-sm">
+                    <i class="fa-solid fa-eye-slash mr-1 sm:mr-2"></i> <span data-i18n="clickToWatch">Watch Uncensored</span>
                 </p>
             </div>
 
             <!-- 2. Loading State -->
             <div id="loadingUI" class="hidden absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/70 backdrop-blur-md text-white px-4">
                 <div class="media-wave"><div></div><div></div><div></div><div></div><div></div></div>
-                <h3 id="statusMsg" class="text-lg sm:text-xl font-bold text-red-400 mb-2 tracking-wide text-center" data-i18n="connecting">Initializing Bypass...</h3>
-                <p class="text-gray-300 text-xs sm:text-sm max-w-sm text-center opacity-80 mb-6" data-i18n="waitText">Do not close this page. Decrypting the original video source.</p>
+                <h3 id="statusMsg" class="text-base sm:text-xl font-bold text-red-400 mb-1 sm:mb-2 tracking-wide text-center" data-i18n="connecting">Initializing Bypass...</h3>
+                <p class="text-gray-300 text-[10px] sm:text-sm max-w-sm text-center opacity-80 mb-4 sm:mb-6" data-i18n="waitText">Do not close this page. Decrypting the original video source.</p>
                 
-                <div class="w-full max-w-xs h-2 bg-gray-800 rounded-full overflow-hidden border border-gray-700">
+                <div class="w-full max-w-xs h-1.5 sm:h-2 bg-gray-800 rounded-full overflow-hidden border border-gray-700">
                     <div id="progressBar" class="h-full bg-red-500 w-0 transition-all duration-300 rounded-full shadow-[0_0_15px_rgba(239,68,68,0.8)]"></div>
                 </div>
-                <p id="percentageText" class="text-xs text-gray-400 mt-2 font-mono">0%</p>
+                <p id="percentageText" class="text-[10px] sm:text-xs text-gray-400 mt-2 font-mono">0%</p>
             </div>
 
-            <!-- 3. Ready State (Isolated - No Redirect to Home) -->
+            <!-- 3. Ready State (Fixed Overflow and Centering) -->
             <div id="readyUI" class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-white dark:bg-gray-800 px-4 text-center">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 dark:bg-green-900/30 text-green-500 rounded-full flex items-center justify-center text-3xl sm:text-4xl mb-4 shadow-sm">
+                <div class="w-12 h-12 sm:w-20 sm:h-20 bg-green-100 dark:bg-green-900/30 text-green-500 rounded-full flex items-center justify-center text-xl sm:text-4xl mb-3 sm:mb-4 shadow-sm">
                     <i class="fa-solid fa-unlock-keyhole"></i>
                 </div>
-                <h2 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white" data-i18n="unlockedTitle">Content Unlocked!</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-sm text-sm" data-i18n="unlockedDesc">The video stream is ready. Click the button below to view or download the media file.</p>
+                <h2 class="text-lg sm:text-2xl font-bold mb-1 sm:mb-2 text-gray-900 dark:text-white" data-i18n="unlockedTitle">Content Unlocked!</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 max-w-sm text-xs sm:text-sm" data-i18n="unlockedDesc">The video stream is ready. Click the button below to view or download the media file.</p>
                 
-                <!-- 🛡️ هذا هو الزر الآمن: كيفتح الفيديو الفيروسي فصفحة جديدة ومكيقيسش الصفحة الرئيسية -->
-                <button onclick="openViralVideo()" class="px-6 py-3 sm:px-8 sm:py-4 bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white font-bold rounded-xl shadow-lg transition flex items-center gap-2">
+                <!-- 🛡️ Fixed Button: proper padding, items-center to align text/icon -->
+                <button onclick="openViralVideo()" class="px-5 py-2.5 sm:px-8 sm:py-4 bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm sm:text-base leading-none">
                     <i class="fa-solid fa-download"></i> <span data-i18n="downloadVideoBtn">Download Video (MP4)</span>
                 </button>
             </div>
         </div>
         
         <!-- Explanation Section -->
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary flex items-center justify-center"><i class="fa-solid fa-circle-play"></i></div>
-                    <h3 class="font-bold text-lg" data-i18n="howToTitle">How to watch?</h3>
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-left">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center gap-3 mb-2 sm:mb-3">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary flex items-center justify-center text-sm sm:text-base"><i class="fa-solid fa-circle-play"></i></div>
+                    <h3 class="font-bold text-base sm:text-lg" data-i18n="howToTitle">How to watch?</h3>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="howToDesc">Click the play button above. Wait for the decryption process to reach 100%, then click 'Download Video' to get the requested media securely.</p>
+                <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm" data-i18n="howToDesc">Click the play button above. Wait for the decryption process to reach 100%, then click 'Download Video' to get the requested media securely.</p>
             </div>
             
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 text-red-500 flex items-center justify-center"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="font-bold text-lg" data-i18n="whyWaitTitle">Why wait 30 seconds?</h3>
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center gap-3 mb-2 sm:mb-3">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-red-100 dark:bg-red-900/30 text-red-500 flex items-center justify-center text-sm sm:text-base"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="font-bold text-base sm:text-lg" data-i18n="whyWaitTitle">Why wait 30 seconds?</h3>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 text-sm" data-i18n="whyWaitDesc">To protect your privacy and bypass social media filters (like Facebook blocks), our servers need this time to encrypt your connection and generate a fresh, untrackable secure link.</p>
+                <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm" data-i18n="whyWaitDesc">To protect your privacy and bypass social media filters, our servers need this time to encrypt your connection and generate a fresh, untrackable secure link.</p>
             </div>
         </div>
 
@@ -133,13 +133,13 @@
 
     <!-- Footer -->
     <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 text-center transition-colors w-full mt-auto">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-4">
-            <div class="flex gap-4 text-sm font-medium">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center gap-3 sm:gap-4">
+            <div class="flex gap-4 text-xs sm:text-sm font-medium">
                 <a href="../privacy/" class="text-gray-500 hover:text-primary transition" data-i18n="privacyPolicy">Privacy Policy</a>
                 <span class="text-gray-300 dark:text-gray-600">|</span>
                 <a href="../terms/" class="text-gray-500 hover:text-primary transition" data-i18n="termsOfUse">Terms of Use</a>
             </div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2026 TurboDwn. Secure Media Access.</p>
+            <p class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">&copy; 2026 TurboDwn. Secure Media Access.</p>
         </div>
     </footer>
 
@@ -248,15 +248,12 @@
         function showReadyState() {
             document.getElementById('loadingUI').classList.add('hidden');
             document.getElementById('readyUI').classList.remove('hidden');
-            // 🛡️ الملاحظة: حيدنا التوجيه التلقائي باش نحميو الـ Bounce Rate ديالك.
         }
 
         // 🚀 الفانكشن الخاصة بتوجيه الزائر للفيديو الفيروسي أو رابط الإعلان
         function openViralVideo() {
-            // 👇 هنا أ السي أنيس غتحط الرابط ديال الفيديو اللي كينتاظرو الزائر، أو رابط Adsterra (Direct Link)
+            // 👇 هنا أ السي أنيس غتحط الرابط ديال الفيديو أو رابط Adsterra (Direct Link)
             const videoOrAdLink = "https://example.com/viral-lion-video.mp4"; 
-            
-            // كيتفتح فـ نافذة جديدة باش الزائر كيبقى فالموقع ديالك وكتتحسب ليه الجلسة مزيان
             window.open(videoOrAdLink, '_blank'); 
         }
     </script>
