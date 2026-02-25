@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 🛡️ حماية الـ SEO -->
+    
+    <!-- 🛡️ حماية الـ SEO: جوجل مغاديش يأرشف هاد الصفحة باش ميتضرش موقعك الرئيسي -->
     <meta name="robots" content="noindex, nofollow">
+    
+    <!-- 🚀 أكواد فيسبوك وواتساب (Open Graph) باش يبان الرابط بتصويرة واعرة -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://turbodwn.com/watch/">
+    <meta property="og:title" content="🔞 Restricted Video - Watch Full Clip">
+    <meta property="og:description" content="This video contains sensitive or restricted content. Click to bypass filters and watch the full uncensored footage securely.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop">
+    
+    <!-- 🚀 أكواد تويتر (X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🔞 Restricted Video - Watch Full Clip">
+    <meta name="twitter:description" content="This video contains sensitive or restricted content. Click to bypass filters and watch the full uncensored footage securely.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200&auto=format&fit=crop">
+
     <title>Restricted Content | TurboDwn</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -68,7 +83,7 @@
             <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-base max-w-md mx-auto" data-i18n="warningDesc">This video may contain graphic or restricted content. Viewer discretion is advised.</p>
         </div>
 
-        <!-- Player Container: Changed to aspect-[4/3] on mobile for more vertical space, aspect-video on sm+ -->
+        <!-- Player Container -->
         <div class="w-full aspect-[4/3] sm:aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-gray-800 relative flex flex-col items-center justify-center transition-colors mb-8">
             
             <div class="absolute inset-0 video-bg z-0"></div>
@@ -95,7 +110,7 @@
                 <p id="percentageText" class="text-[10px] sm:text-xs text-gray-400 mt-2 font-mono">0%</p>
             </div>
 
-            <!-- 3. Ready State (Fixed Overflow and Centering) -->
+            <!-- 3. Ready State (Isolated) -->
             <div id="readyUI" class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-white dark:bg-gray-800 px-4 text-center">
                 <div class="w-12 h-12 sm:w-20 sm:h-20 bg-green-100 dark:bg-green-900/30 text-green-500 rounded-full flex items-center justify-center text-xl sm:text-4xl mb-3 sm:mb-4 shadow-sm">
                     <i class="fa-solid fa-unlock-keyhole"></i>
@@ -103,7 +118,6 @@
                 <h2 class="text-lg sm:text-2xl font-bold mb-1 sm:mb-2 text-gray-900 dark:text-white" data-i18n="unlockedTitle">Content Unlocked!</h2>
                 <p class="text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 max-w-sm text-xs sm:text-sm" data-i18n="unlockedDesc">The video stream is ready. Click the button below to view or download the media file.</p>
                 
-                <!-- 🛡️ Fixed Button: proper padding, items-center to align text/icon -->
                 <button onclick="openViralVideo()" class="px-5 py-2.5 sm:px-8 sm:py-4 bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm sm:text-base leading-none">
                     <i class="fa-solid fa-download"></i> <span data-i18n="downloadVideoBtn">Download Video (MP4)</span>
                 </button>
@@ -144,7 +158,7 @@
     </footer>
 
     <script>
-        // 🌐 Translations
+        // Translations
         const translations = {
             en: {
                 warningTitle: "Sensitive Content Warning",
@@ -250,9 +264,9 @@
             document.getElementById('readyUI').classList.remove('hidden');
         }
 
-        // 🚀 الفانكشن الخاصة بتوجيه الزائر للفيديو الفيروسي أو رابط الإعلان
+        // 🚀 الفانكشن الخاصة بتوجيه الزائر
         function openViralVideo() {
-            // 👇 هنا أ السي أنيس غتحط الرابط ديال الفيديو أو رابط Adsterra (Direct Link)
+            // 👇 هنا حط الرابط ديال الفيديو ولا الإعلان
             const videoOrAdLink = "https://example.com/viral-lion-video.mp4"; 
             window.open(videoOrAdLink, '_blank'); 
         }
