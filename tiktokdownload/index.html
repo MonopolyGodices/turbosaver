@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🚀 SEO Meta Tags -->
     <title>TikTok Video Downloader Without Watermark | TurboDwn</title>
-    <meta name="description" content="Download TikTok videos without watermark for free. Fast, secure, and HD quality TikTok downloader.">
+    <meta name="description" content="Download TikTok videos without watermark for free. Fast, secure, and HD quality TikTok downloader. Save TikTok clips in MP4 or MP3 format.">
+    <link rel="canonical" href="https://turbodwn.com/tik/" />
+    
+    <!-- 🚀 Open Graph / Social Media -->
+    <meta property="og:title" content="TikTok Video Downloader Without Watermark - TurboDwn" />
+    <meta property="og:description" content="Download TikTok videos without watermark for free. Fast, secure, and HD quality TikTok downloader." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://turbodwn.com/tik/" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -18,8 +27,48 @@
         .tiktok-text { color: #000; text-shadow: 2px 0 #00f2fe, -2px 0 #fe0979; }
         .dark .tiktok-text { color: #fff; }
     </style>
-   <script src="https://pl29563012.effectivecpmnetwork.com/15/51/d9/1551d90dddca7ba004c80909729e7251.js"></script>
+    <script src="https://pl29563012.effectivecpmnetwork.com/15/51/d9/1551d90dddca7ba004c80909729e7251.js"></script>
  
+    <!-- 🚀 JSON-LD Schema for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TurboDwn TikTok Downloader",
+      "url": "https://turbodwn.com/tik/",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Download TikTok videos without watermark for free. Fast, secure, and HD quality TikTok downloader."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this TikTok downloader free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, TurboDwn is completely free. You can download unlimited TikTok videos without paying anything." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a TikTok account?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No, you don't need an account. Just paste the public link of the video and download it." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are videos saved on an iPhone/Android?",
+          "acceptedAnswer": { "@type": "Answer", "text": "On Android, they go to your 'Downloads' folder. On iPhone, use Safari, tap download, and save it to your Photos app." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex flex-col font-sans overflow-x-hidden">
 
@@ -102,7 +151,7 @@
             </div>
         </div>
 
-        <!-- 🛠️ NEW: How to Download TikTok -->
+        <!-- How to Download TikTok -->
         <div class="w-full bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-700">
             <h2 class="text-2xl font-bold mb-8 text-center" data-i18n="howToTitle">How to Download TikTok Videos?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -124,7 +173,7 @@
             </div>
         </div>
 
-        <!-- 🚀 NEW: Features specific to TikTok -->
+        <!-- Features specific to TikTok -->
         <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex gap-4">
                 <i class="fa-solid fa-droplet-slash text-3xl text-green-500 mt-1"></i>
@@ -142,7 +191,7 @@
             </div>
         </div>
 
-        <!-- ❓ NEW: TikTok FAQ -->
+        <!-- TikTok FAQ -->
         <div class="w-full bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 text-left">
             <h2 class="text-2xl font-bold mb-6" data-i18n="faqTitle">Frequently Asked Questions</h2>
             <div class="space-y-4">
@@ -241,7 +290,8 @@
                 document.querySelector('.icon-container').classList.replace('left-0', 'right-0');
                 document.querySelector('.icon-container').classList.replace('pl-4', 'pr-4');
                 document.getElementById('videoUrl').classList.replace('pl-11', 'pr-11');
-                document.querySelector('.fa-arrow-left').classList.replace('fa-arrow-left', 'fa-arrow-right');
+                const arrow = document.querySelector('.fa-arrow-left');
+                if(arrow) arrow.classList.replace('fa-arrow-left', 'fa-arrow-right');
             } else {
                 document.documentElement.setAttribute('dir', 'ltr'); document.documentElement.setAttribute('lang', 'en');
                 document.querySelector('.icon-container').classList.replace('right-0', 'left-0');
@@ -302,5 +352,3 @@
     </script>
 </body>
 </html>
-
-
