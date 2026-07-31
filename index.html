@@ -10,7 +10,6 @@
     <link rel="canonical" href="https://turbodwn.com/" />
     <meta name="robots" content="index, follow" />
     
-    <!-- Hreflang & Twitter Cards (رجعناهم) -->
     <link rel="alternate" hreflang="en" href="https://turbodwn.com/" />
     <link rel="alternate" hreflang="x-default" href="https://turbodwn.com/" />
     <meta name="twitter:card" content="summary_large_image">
@@ -42,25 +41,10 @@
         .btn-neon:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 243, 255, 0.6); }
         .text-neon-cyan { color: #00f3ff; text-shadow: 0 0 10px rgba(0, 243, 255, 0.7); }
         .text-neon-pink { color: #bc13fe; text-shadow: 0 0 10px rgba(188, 19, 254, 0.7); }
-        .progress-bar { transition: width 0.3s ease; box-shadow: 0 0 10px rgba(0, 243, 255, 0.8); }
+        .progress-bar { transition: width 0.05s linear; box-shadow: 0 0 10px rgba(0, 243, 255, 0.8); }
 
-        /* 🌊 تأثير قطرات الماء المضيئة */
-        .liquid-container {
-            position: absolute;
-            width: 160px; height: 160px;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            filter: url(#goo);
-            z-index: 0;
-        }
-        .drop {
-            position: absolute;
-            width: 25px; height: 25px;
-            border-radius: 50%;
-            top: 0; left: 50%;
-            transform: translateX(-50%);
-            animation: drip 3s infinite ease-in;
-        }
+        .liquid-container { position: absolute; width: 160px; height: 160px; top: 50%; left: 50%; transform: translate(-50%, -50%); filter: url(#goo); z-index: 0; }
+        .drop { position: absolute; width: 25px; height: 25px; border-radius: 50%; top: 0; left: 50%; transform: translateX(-50%); animation: drip 3s infinite ease-in; }
         .drop:nth-child(1) { left: 30%; animation-delay: 0s; background: #00f3ff; box-shadow: 0 0 15px #00f3ff; }
         .drop:nth-child(2) { left: 70%; animation-delay: 0.8s; background: #bc13fe; box-shadow: 0 0 15px #bc13fe; width: 30px; height: 30px; }
         .drop:nth-child(3) { left: 50%; animation-delay: 1.5s; background: #00f3ff; box-shadow: 0 0 15px #00f3ff; width: 20px; height: 20px; }
@@ -74,9 +58,11 @@
             100% { top: 120%; opacity: 0; transform: translateX(-50%) scale(0.3); }
         }
         .logo-glow { position: relative; z-index: 1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        .quality-btn { transition: all 0.2s; cursor: pointer; }
+        .quality-btn.active { border-color: #00f3ff !important; color: #00f3ff !important; background: rgba(0, 243, 255, 0.1) !important; box-shadow: 0 0 10px rgba(0, 243, 255, 0.3); }
     </style>
 
-    <!-- 🚀 JSON-LD Schema (FAQ مطابقة 100% للموقع) -->
+    <!-- 🚀 JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -103,7 +89,6 @@
 </head>
 <body class="text-white font-sans overflow-x-hidden min-h-screen flex flex-col">
 
-    <!-- SVG Filter -->
     <svg style="position: absolute; width: 0; height: 0;">
         <defs>
             <filter id="goo">
@@ -132,11 +117,7 @@
             <div class="text-center space-y-6 max-w-2xl mx-auto pt-8">
                 <div class="relative inline-flex items-center justify-center w-24 h-24 mb-2">
                     <div class="liquid-container">
-                        <div class="drop"></div>
-                        <div class="drop"></div>
-                        <div class="drop"></div>
-                        <div class="drop"></div>
-                        <div class="drop"></div>
+                        <div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div><div class="drop"></div>
                     </div>
                     <i class="fa-brands fa-tiktok text-white text-5xl logo-glow"></i>
                 </div>
@@ -167,16 +148,26 @@
                         <div class="w-full md:w-2/3 flex flex-col gap-4">
                             <h3 id="resTitle" class="text-lg font-bold line-clamp-3 text-cyan-400">TikTok Video</h3>
                             
-                            <div id="qualitySelector" class="flex flex-col gap-3">
-                                <p class="text-sm text-gray-400 mb-1">Select Video Quality:</p>
-                                <div class="grid grid-cols-3 gap-2">
-                                    <button onclick="startPreparation('video', '720p')" class="quality-btn py-2 rounded-lg border border-gray-600 text-gray-400 hover:text-white hover:border-cyan-500">720p</button>
-                                    <button onclick="startPreparation('video', '1080p')" class="quality-btn py-2 rounded-lg border border-gray-600 text-gray-400 hover:text-white hover:border-cyan-500">1080p HD</button>
-                                    <button onclick="startPreparation('video', '4k')" class="quality-btn py-2 rounded-lg border border-gray-600 text-gray-400 hover:text-white hover:border-cyan-500">4K Ultra</button>
+                            <div id="actionSelector" class="flex flex-col gap-4">
+                                <div class="flex flex-col gap-2">
+                                    <p class="text-sm text-gray-400 mb-1">Select Video Quality:</p>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <button onclick="selectQuality('720p', this)" class="quality-btn py-2 rounded-lg border border-gray-600 text-gray-400 hover:text-white hover:border-cyan-500">720p</button>
+                                        <button onclick="selectQuality('1080p', this)" class="quality-btn active py-2 rounded-lg border border-gray-600 text-gray-400 hover:text-white hover:border-cyan-500">1080p HD</button>
+                                        <button onclick="selectQuality('4k', this)" class="quality-btn py-2 rounded-lg border border-gray-600 text-gray-400 hover:text-white hover:border-cyan-500">4K Ultra</button>
+                                    </div>
+                                    <button onclick="startPreparation('video')" class="w-full mt-1 px-4 py-3 bg-green-500/20 border border-green-500/50 text-green-400 hover:bg-green-500/30 text-center font-bold rounded-xl transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-video"></i> Download Video
+                                    </button>
                                 </div>
-                                <button onclick="startPreparation('audio', 'mp3')" class="quality-btn py-2 mt-2 rounded-lg border border-purple-600 text-purple-400 hover:bg-purple-500/10 flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-music"></i> Download MP3 Audio
-                                </button>
+                                
+                                <hr class="border-gray-700">
+
+                                <div class="flex flex-col gap-2">
+                                    <button onclick="startPreparation('audio')" class="w-full px-4 py-3 bg-purple-500/20 border border-purple-500/50 text-purple-400 hover:bg-purple-500/30 text-center font-bold rounded-xl transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-music"></i> Download MP3 Audio
+                                    </button>
+                                </div>
                             </div>
 
                             <div id="processingBar" class="hidden flex-col gap-3">
@@ -227,7 +218,6 @@
                 <p class="text-gray-400 leading-relaxed">
                     TurboDwn is the ultimate online tool to download TikTok videos without watermark in HD MP4 format. Whether you're using Android, iOS, or PC, our TikTok saver allows you to save your favorite clips instantly. Unlike other downloaders, we don't require any app installation or login. Simply paste the link and get your video.
                 </p>
-                
                 <h3 class="text-2xl font-bold mt-6 text-white">Why Choose TurboDwn?</h3>
                 <ul class="list-disc list-inside text-gray-400 space-y-2">
                     <li><strong>No Watermark:</strong> Download TikTok videos 100% clean, without any logos or usernames.</li>
@@ -236,19 +226,17 @@
                     <li><strong>Fast & Secure:</strong> We use advanced APIs to fetch links instantly without storing your data.</li>
                     <li><strong>Unlimited Downloads:</strong> Save as many TikTok videos as you want, completely free.</li>
                 </ul>
-
                 <h3 class="text-2xl font-bold mt-6 text-white">How to Save TikTok Videos on iPhone (iOS)?</h3>
                 <p class="text-gray-400 leading-relaxed">
                     To download TikTok without watermark on iPhone, copy the link from the TikTok app, paste it into TurboDwn, and select your quality. Once the processing bar hits 100%, click "Save Video Now". Safari will prompt you to save the MP4 file directly to your Files app or Camera Roll.
                 </p>
-
                 <h3 class="text-2xl font-bold mt-6 text-white">TikTok to MP3 Converter</h3>
                 <p class="text-gray-400 leading-relaxed">
                     Love a specific song or sound on TikTok? TurboDwn acts as a powerful TikTok to MP3 converter. Just paste the video link, select "Download MP3 Audio", and extract the sound in high quality. Perfect for creating your own content or listening offline.
                 </p>
             </article>
 
-            <!-- FAQ Section (مطابقة مع الـ Schema) -->
+            <!-- FAQ Section -->
             <div class="space-y-6">
                 <h2 class="text-3xl font-bold text-center">Frequently Asked <span class="text-neon-pink">Questions</span></h2>
                 <div class="max-w-3xl mx-auto space-y-4">
@@ -286,8 +274,14 @@
         const TIKTOK_FREE_API = "https://www.tikwm.com/api/?url=";
         let currentVideoUrl = "";
         let currentAudioUrl = "";
+        let selectedVideoQuality = "1080p"; 
 
-        // Search API Logic
+        function selectQuality(quality, btn) {
+            selectedVideoQuality = quality;
+            document.querySelectorAll('.quality-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
         async function handleSearch() {
             const urlInput = document.getElementById('videoUrl').value.trim();
             const btnText = document.getElementById('searchBtnText');
@@ -299,7 +293,7 @@
 
             errorMsg.classList.add('hidden'); 
             resultCard.classList.add('hidden');
-            document.getElementById('qualitySelector').classList.remove('hidden');
+            document.getElementById('actionSelector').classList.remove('hidden');
             document.getElementById('processingBar').classList.add('hidden');
             document.getElementById('finalDownloadBtn').classList.add('hidden');
 
@@ -330,9 +324,9 @@
             finally { btnText.innerHTML = "Search"; searchBtn.disabled = false; searchBtn.classList.remove('opacity-70'); }
         }
 
-        // دالة العداد الوهمي والتجهيز
-        function startPreparation(type, quality) {
-            document.getElementById('qualitySelector').classList.add('hidden');
+       
+        function startPreparation(type) {
+            document.getElementById('actionSelector').classList.add('hidden');
             document.getElementById('processingBar').classList.remove('hidden');
             document.getElementById('finalDownloadBtn').classList.add('hidden');
 
@@ -342,8 +336,13 @@
 
             let progress = 0;
             let actualUrl = type === 'audio' ? currentAudioUrl : currentVideoUrl;
-            let intervalTime = quality === '4k' ? 30 : (quality === '1080p' ? 25 : 20);
-            if (type === 'audio') intervalTime = 15;
+            let quality = type === 'audio' ? 'MP3' : selectedVideoQuality;
+
+             
+            let durationMs = 3000; 
+            if (quality === '1080p') durationMs = 4000;
+            if (quality === '4k') durationMs = 5000;    
+            if (type === 'audio') durationMs = 2000;    
 
             const messages = [
                 "Connecting to TikTok Server...",
@@ -353,8 +352,12 @@
                 "Finalizing File..."
             ];
 
+            
+            const intervalTime = 50; 
+            const increment = (intervalTime / durationMs) * 100; 
+
             const interval = setInterval(() => {
-                progress += Math.random() * 10 + 5;
+                progress += increment;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(interval);
@@ -380,7 +383,7 @@
         function showError(msg) { const errorMsg = document.getElementById('errorMsg'); errorMsg.innerText = msg; errorMsg.classList.remove('hidden'); }
     </script>
 
-    <!-- 🚀 Ad Scripts & Analytics (merzain async) -->
+    <!-- 🚀 Ad Scripts & Analytics -->
     <script async src="https://pl28793808.effectivecpmnetwork.com/26/0c/95/260c95ed542e92c4e4827feb1ebe44b4.js"></script>
     
     <script type="text/javascript">
