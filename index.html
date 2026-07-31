@@ -10,6 +10,13 @@
     <link rel="canonical" href="https://turbodwn.com/" />
     <meta name="robots" content="index, follow" />
     
+    <!-- Hreflang & Twitter Cards (رجعناهم) -->
+    <link rel="alternate" hreflang="en" href="https://turbodwn.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://turbodwn.com/" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TurboDwn - Free TikTok Video Downloader (No Watermark)">
+    <meta name="twitter:description" content="Download TikTok videos without watermark in HD MP4 quality. Fast, free, and secure.">
+
     <meta property="og:title" content="TurboDwn - Free TikTok Video Downloader (No Watermark)">
     <meta property="og:description" content="Download TikTok videos without watermark in HD MP4 quality. Fast, free, and secure.">
     <meta property="og:type" content="website">
@@ -37,24 +44,20 @@
         .text-neon-pink { color: #bc13fe; text-shadow: 0 0 10px rgba(188, 19, 254, 0.7); }
         .progress-bar { transition: width 0.3s ease; box-shadow: 0 0 10px rgba(0, 243, 255, 0.8); }
 
-        /* 🌊 تأثير قطرات الماء المضيئة (Liquid Gooey) */
+        /* 🌊 تأثير قطرات الماء المضيئة */
         .liquid-container {
             position: absolute;
-            width: 160px; /* كبرناه شوية باش القطرات يبانو من ورا */
-            height: 160px;
-            top: 50%;
-            left: 50%;
+            width: 160px; height: 160px;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            filter: url(#goo); /* هادي لي كتخلي القطرات كيبانو بحال سائل */
+            filter: url(#goo);
             z-index: 0;
         }
         .drop {
             position: absolute;
-            width: 25px;
-            height: 25px;
+            width: 25px; height: 25px;
             border-radius: 50%;
-            top: 0;
-            left: 50%;
+            top: 0; left: 50%;
             transform: translateX(-50%);
             animation: drip 3s infinite ease-in;
         }
@@ -70,14 +73,10 @@
             80% { opacity: 1; }
             100% { top: 120%; opacity: 0; transform: translateX(-50%) scale(0.3); }
         }
-        .logo-glow {
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-        }
+        .logo-glow { position: relative; z-index: 1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
     </style>
 
-    <!-- 🚀 JSON-LD Schema -->
+    <!-- 🚀 JSON-LD Schema (FAQ مطابقة 100% للموقع) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -95,16 +94,16 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How to download TikTok videos without watermark?", "acceptedAnswer": { "@type": "Answer", "text": "Copy the TikTok video link, paste it into the TurboDwn search box, and click Search. You can then download the video in HD without any watermark." } },
-        { "@type": "Question", "name": "Can I download TikTok MP3 audio?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! When you paste a TikTok link, TurboDwn provides an option to download the video (MP4) or extract the audio (MP3)." } },
-        { "@type": "Question", "name": "Is TurboDwn free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, TurboDwn is 100% free. You can download unlimited TikTok videos without any hidden fees." } }
+        { "@type": "Question", "name": "Does it remove the watermark?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! Download 100% clean without the TikTok logo." } },
+        { "@type": "Question", "name": "Can I download MP3?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, choose between Video (MP4) or Audio (MP3)." } },
+        { "@type": "Question", "name": "Where are videos saved?", "acceptedAnswer": { "@type": "Answer", "text": "In your \"Downloads\" folder or Photos app (iPhone)." } }
       ]
     }
     </script>
 </head>
 <body class="text-white font-sans overflow-x-hidden min-h-screen flex flex-col">
 
-    <!-- SVG Filter باش يخدم تأثير القطرات (ما يبانش فالموقع) -->
+    <!-- SVG Filter -->
     <svg style="position: absolute; width: 0; height: 0;">
         <defs>
             <filter id="goo">
@@ -129,10 +128,9 @@
     <main class="flex-grow flex flex-col items-center px-4 py-12 w-full">
         <div class="w-full max-w-5xl space-y-10">
             
-            <!-- Hero Section (مع تأثير القطرات) -->
+            <!-- Hero Section -->
             <div class="text-center space-y-6 max-w-2xl mx-auto pt-8">
                 <div class="relative inline-flex items-center justify-center w-24 h-24 mb-2">
-                    <!-- قطرات الماء -->
                     <div class="liquid-container">
                         <div class="drop"></div>
                         <div class="drop"></div>
@@ -140,7 +138,6 @@
                         <div class="drop"></div>
                         <div class="drop"></div>
                     </div>
-                    <!-- لوغو تيك توك -->
                     <i class="fa-brands fa-tiktok text-white text-5xl logo-glow"></i>
                 </div>
                 <h1 class="text-5xl sm:text-6xl font-bold tracking-tight">
@@ -251,7 +248,7 @@
                 </p>
             </article>
 
-            <!-- FAQ Section -->
+            <!-- FAQ Section (مطابقة مع الـ Schema) -->
             <div class="space-y-6">
                 <h2 class="text-3xl font-bold text-center">Frequently Asked <span class="text-neon-pink">Questions</span></h2>
                 <div class="max-w-3xl mx-auto space-y-4">
@@ -383,8 +380,8 @@
         function showError(msg) { const errorMsg = document.getElementById('errorMsg'); errorMsg.innerText = msg; errorMsg.classList.remove('hidden'); }
     </script>
 
-    <!-- 🚀 Ad Scripts & Analytics -->
-    <script src="https://pl28793808.effectivecpmnetwork.com/26/0c/95/260c95ed542e92c4e4827feb1ebe44b4.js"></script>
+    <!-- 🚀 Ad Scripts & Analytics (merzain async) -->
+    <script async src="https://pl28793808.effectivecpmnetwork.com/26/0c/95/260c95ed542e92c4e4827feb1ebe44b4.js"></script>
     
     <script type="text/javascript">
     var sc_project=13206430; 
