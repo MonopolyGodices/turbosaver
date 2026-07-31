@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🚀 SEO Meta Tags القوية (بلا نجوم مصطنعة) -->
+    <!-- 🚀 SEO Meta Tags -->
     <title>TurboDwn - #1 Free TikTok Video Downloader (No Watermark) HD</title>
     <meta name="description" content="Download TikTok videos without watermark in HD MP4 quality. Fast, free, and secure. Convert TikTok to MP3. No app required. TurboDwn is the best TikTok saver online.">
     <link rel="canonical" href="https://turbodwn.com/" />
@@ -17,11 +17,15 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { neon_cyan: '#00f3ff', neon_pink: '#bc13fe', dark_bg: '#050505' }, fontFamily: { sans: ['Space Grotesk', 'sans-serif'] } } } }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { neon_cyan: '#00f3ff', neon_pink: '#bc13fe', dark_bg: '#050505' }, fontFamily: { sans: ['Space Grotesk', 'sans-serif'] } } }
+        }
     </script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         body { background-color: #050505; background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px); background-size: 40px 40px; }
         .neon-card { background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(0, 243, 255, 0.2); box-shadow: 0 0 15px rgba(0, 243, 255, 0.05), inset 0 0 15px rgba(0, 243, 255, 0.05); transition: all 0.3s ease; }
@@ -32,9 +36,48 @@
         .text-neon-cyan { color: #00f3ff; text-shadow: 0 0 10px rgba(0, 243, 255, 0.7); }
         .text-neon-pink { color: #bc13fe; text-shadow: 0 0 10px rgba(188, 19, 254, 0.7); }
         .progress-bar { transition: width 0.3s ease; box-shadow: 0 0 10px rgba(0, 243, 255, 0.8); }
+
+        /* 🌊 تأثير قطرات الماء المضيئة (Liquid Gooey) */
+        .liquid-container {
+            position: absolute;
+            width: 160px; /* كبرناه شوية باش القطرات يبانو من ورا */
+            height: 160px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: url(#goo); /* هادي لي كتخلي القطرات كيبانو بحال سائل */
+            z-index: 0;
+        }
+        .drop {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: drip 3s infinite ease-in;
+        }
+        .drop:nth-child(1) { left: 30%; animation-delay: 0s; background: #00f3ff; box-shadow: 0 0 15px #00f3ff; }
+        .drop:nth-child(2) { left: 70%; animation-delay: 0.8s; background: #bc13fe; box-shadow: 0 0 15px #bc13fe; width: 30px; height: 30px; }
+        .drop:nth-child(3) { left: 50%; animation-delay: 1.5s; background: #00f3ff; box-shadow: 0 0 15px #00f3ff; width: 20px; height: 20px; }
+        .drop:nth-child(4) { left: 20%; animation-delay: 2.2s; background: #bc13fe; box-shadow: 0 0 15px #bc13fe; }
+        .drop:nth-child(5) { left: 80%; animation-delay: 1.1s; background: #00f3ff; box-shadow: 0 0 15px #00f3ff; width: 15px; height: 15px; }
+
+        @keyframes drip {
+            0% { top: -30px; opacity: 0; transform: translateX(-50%) scale(0.5); }
+            20% { opacity: 1; transform: translateX(-50%) scale(1); }
+            80% { opacity: 1; }
+            100% { top: 120%; opacity: 0; transform: translateX(-50%) scale(0.3); }
+        }
+        .logo-glow {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
     </style>
 
-    <!-- 🚀 JSON-LD Schema (WebApp + FAQ بلا aggregateRating باش نتجنبو العقوبات) -->
+    <!-- 🚀 JSON-LD Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,6 +104,17 @@
 </head>
 <body class="text-white font-sans overflow-x-hidden min-h-screen flex flex-col">
 
+    <!-- SVG Filter باش يخدم تأثير القطرات (ما يبانش فالموقع) -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="goo" />
+                <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+    </svg>
+
     <!-- Navbar -->
     <nav class="w-full sticky top-0 z-50 px-4 py-4 backdrop-blur-md bg-black/30 border-b border-cyan-500/10">
         <div class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center">
@@ -75,10 +129,19 @@
     <main class="flex-grow flex flex-col items-center px-4 py-12 w-full">
         <div class="w-full max-w-5xl space-y-10">
             
-            <!-- Hero Section -->
-            <div class="text-center space-y-8 max-w-2xl mx-auto">
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl neon-card text-4xl mb-2">
-                    <i class="fa-brands fa-tiktok text-white"></i>
+            <!-- Hero Section (مع تأثير القطرات) -->
+            <div class="text-center space-y-6 max-w-2xl mx-auto pt-8">
+                <div class="relative inline-flex items-center justify-center w-24 h-24 mb-2">
+                    <!-- قطرات الماء -->
+                    <div class="liquid-container">
+                        <div class="drop"></div>
+                        <div class="drop"></div>
+                        <div class="drop"></div>
+                        <div class="drop"></div>
+                        <div class="drop"></div>
+                    </div>
+                    <!-- لوغو تيك توك -->
+                    <i class="fa-brands fa-tiktok text-white text-5xl logo-glow"></i>
                 </div>
                 <h1 class="text-5xl sm:text-6xl font-bold tracking-tight">
                     <span class="text-neon-cyan">Free</span> TikTok <span class="text-neon-pink">Downloader</span>
@@ -140,7 +203,7 @@
             </div>
 
             <!-- How To -->
-            <div class="space-y-10">
+            <div class="space-y-8">
                 <h2 class="text-3xl font-bold text-center">How to <span class="text-neon-cyan">Download?</span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="neon-card p-8 rounded-2xl text-center">
@@ -222,9 +285,8 @@
     </footer>
 
     <script>
-        // 🚀 API Configuration مع Fallback (احتياطي)
-        const TIKTOK_PRIMARY_API = "https://www.tikwm.com/api/?url=";
-        const TIKTOK_FALLBACK_API = "https://api.snaptik.app/v2/?url="; // API إضافي يلا توقف الأول
+        // 🚀 API Configuration
+        const TIKTOK_FREE_API = "https://www.tikwm.com/api/?url=";
         let currentVideoUrl = "";
         let currentAudioUrl = "";
 
@@ -238,7 +300,6 @@
 
             if (!urlInput || !urlInput.includes("tiktok.com")) { showError("Please enter a valid TikTok link!"); return; }
 
-            // Reset UI
             errorMsg.classList.add('hidden'); 
             resultCard.classList.add('hidden');
             document.getElementById('qualitySelector').classList.remove('hidden');
@@ -248,8 +309,7 @@
             btnText.innerHTML = "Processing..."; searchBtn.disabled = true; searchBtn.classList.add('opacity-70');
 
             try {
-                // كنجربو الـ API الأول
-                const response = await fetch(TIKTOK_PRIMARY_API + encodeURIComponent(urlInput));
+                const response = await fetch(TIKTOK_FREE_API + encodeURIComponent(urlInput));
                 const jsonResponse = await response.json();
 
                 if (jsonResponse.data) {
@@ -267,19 +327,13 @@
                         currentAudioUrl = urlAudio;
                         resultCard.classList.remove('hidden');
                     } else { showError("Error processing the link. Please try again."); }
-                } else { 
-                    // يلا الأول ماخدمش، كنجربو الاحتياطي (هنا خاصك تبرمج الفورمات ديالو يلا بدلات)
-                    showError("Error processing the link. Please try again."); 
-                }
-            } catch (error) { 
-                console.error(error); 
-                showError("Server busy. Please try again in a moment."); 
-            } finally { 
-                btnText.innerHTML = "Search"; searchBtn.disabled = false; searchBtn.classList.remove('opacity-70'); 
-            }
+                } else { showError("Error processing the link. Please try again."); }
+
+            } catch (error) { console.error(error); showError("Server busy. Please try again in a moment."); } 
+            finally { btnText.innerHTML = "Search"; searchBtn.disabled = false; searchBtn.classList.remove('opacity-70'); }
         }
 
-        // دالة العداد الوهمي والتجهيز (Dwell Time)
+        // دالة العداد الوهمي والتجهيز
         function startPreparation(type, quality) {
             document.getElementById('qualitySelector').classList.add('hidden');
             document.getElementById('processingBar').classList.remove('hidden');
@@ -291,7 +345,6 @@
 
             let progress = 0;
             let actualUrl = type === 'audio' ? currentAudioUrl : currentVideoUrl;
-            // السرعة ديال العداد (خليوها سريعة شوية باش ميزعجش الزائر)
             let intervalTime = quality === '4k' ? 30 : (quality === '1080p' ? 25 : 20);
             if (type === 'audio') intervalTime = 15;
 
@@ -304,7 +357,7 @@
             ];
 
             const interval = setInterval(() => {
-                progress += Math.random() * 10 + 5; // زيادة أسرع
+                progress += Math.random() * 10 + 5;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(interval);
